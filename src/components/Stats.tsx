@@ -6,6 +6,8 @@ import { FetchErrorData } from "opds-web-client/lib/interfaces";
 import { StatsData, LibrariesData, LibraryData } from "../interfaces";
 import { State } from "../reducers/index";
 import LoadingIndicator from "opds-web-client/lib/components/LoadingIndicator";
+const Loader = LoadingIndicator as any;
+// import LoadingIndicator from "opds-web-client/lib/components/LoadingIndicator";
 import ErrorMessage from "./ErrorMessage";
 import LibraryStats from "./LibraryStats";
 
@@ -58,7 +60,7 @@ export class Stats extends React.Component<StatsProps, {}> {
         }
 
         { !this.props.isLoaded &&
-          <LoadingIndicator />
+          <Loader />
         }
       </div>
     );

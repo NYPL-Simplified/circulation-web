@@ -5,6 +5,7 @@ import { State } from "../reducers/index";
 import { connect } from "react-redux";
 import ActionCreator from "../actions";
 import LoadingIndicator from "opds-web-client/lib/components/LoadingIndicator";
+const Loader = LoadingIndicator as any;
 import ErrorMessage from "./ErrorMessage";
 import EditableInput from "./EditableInput";
 import { Alert } from "react-bootstrap";
@@ -49,7 +50,7 @@ export class ChangePasswordForm extends React.Component<ChangePasswordFormProps,
           <Alert bsStyle="danger">{ this.state.error }</Alert>
         }
         { this.props.isFetching &&
-          <LoadingIndicator />
+          <Loader />
         }
         { this.state.success &&
           <Alert bsStyle="success">Password changed successfully.</Alert>

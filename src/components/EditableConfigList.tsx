@@ -5,6 +5,7 @@ import { Alert } from "react-bootstrap";
 import { State } from "../reducers/index";
 import { Button } from "library-simplified-reusable-components";
 import LoadingIndicator from "opds-web-client/lib/components/LoadingIndicator";
+const Loader = LoadingIndicator as any;
 import ErrorMessage from "./ErrorMessage";
 import PencilIcon from "./icons/PencilIcon";
 import TrashIcon from "./icons/TrashIcon";
@@ -106,7 +107,7 @@ export abstract class GenericEditableConfigList<T, U, V extends EditableConfigLi
           <ErrorMessage error={this.props.formError} />
         }
         { this.props.isFetching &&
-          <LoadingIndicator />
+          <Loader />
         }
         { canListAllData &&
           <div>

@@ -17,6 +17,7 @@ import Admin from "../models/Admin";
 import { FetchErrorData, CollectionData } from "opds-web-client/lib/interfaces";
 import CustomListEditor from "./CustomListEditor";
 import LoadingIndicator from "opds-web-client/lib/components/LoadingIndicator";
+const Loader = LoadingIndicator as any;
 import ErrorMessage from "./ErrorMessage";
 import EditableInput from "./EditableInput";
 import PencilIcon from "./icons/PencilIcon";
@@ -103,7 +104,7 @@ export class CustomLists extends React.Component<CustomListsProps, CustomListsSt
           <ErrorMessage error={this.props.fetchError} />
         }
         { this.props.isFetching &&
-          <LoadingIndicator />
+          <Loader />
         }
         <div className="custom-lists">
           { this.makeSidebar() }

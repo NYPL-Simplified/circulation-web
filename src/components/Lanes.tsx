@@ -10,6 +10,7 @@ import { LaneData, LanesData, CustomListData, CustomListsData } from "../interfa
 import { FetchErrorData } from "opds-web-client/lib/interfaces";
 import LaneEditor from "./LaneEditor";
 import LoadingIndicator from "opds-web-client/lib/components/LoadingIndicator";
+const Loader = LoadingIndicator as any;
 import ErrorMessage from "./ErrorMessage";
 import EditableInput from "./EditableInput";
 import { Button } from "library-simplified-reusable-components";
@@ -109,7 +110,7 @@ export class Lanes extends React.Component<LanesProps, LanesState> {
           <ErrorMessage error={errorMessage} />
         }
         { this.props.isFetching &&
-          <LoadingIndicator />
+          <Loader />
         }
 
         <div className="lanes">

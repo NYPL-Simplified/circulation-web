@@ -6,6 +6,7 @@ import { DiagnosticsData } from "../interfaces";
 import { State } from "../reducers/index";
 import DiagnosticsServiceType from "./DiagnosticsServiceType";
 import LoadingIndicator from "opds-web-client/lib/components/LoadingIndicator";
+const Loader = LoadingIndicator as any;
 import ErrorMessage from "./ErrorMessage";
 import { FetchErrorData } from "opds-web-client/lib/interfaces";
 import { TabContainer, TabContainerProps } from "./TabContainer";
@@ -63,7 +64,7 @@ export class DiagnosticsTabContainer extends TabContainer<DiagnosticsTabContaine
         component = <ErrorMessage error={this.props.fetchError} />;
       }
       else if (!this.props.isLoaded) {
-        component = <LoadingIndicator />;
+        component = <Loader />;
       }
       else if (this.props.diagnostics) {
         component = <DiagnosticsServiceType type={serviceType} services={this.props.diagnostics[serviceType]} />;

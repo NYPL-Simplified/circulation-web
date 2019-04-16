@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import ActionCreator from "../actions";
 import ErrorMessage from "./ErrorMessage";
 import LoadingIndicator from "opds-web-client/lib/components/LoadingIndicator";
+const Loader = LoadingIndicator as any;
 import CatalogLink from "opds-web-client/lib/components/CatalogLink";
 import CirculationEventsDownloadForm from "./CirculationEventsDownloadForm";
 import { CirculationEventData } from "../interfaces";
@@ -71,7 +72,7 @@ export class CirculationEvents extends React.Component<CirculationEventsProps, C
         }
 
         { !this.props.isLoaded &&
-          <LoadingIndicator />
+          <Loader />
         }
 
         <table className="table table-striped">
