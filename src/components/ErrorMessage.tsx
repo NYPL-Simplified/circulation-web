@@ -71,7 +71,7 @@ export default class ErrorMessage extends React.Component<ErrorMessageProps, {}>
 
   componentDidMount() {
     if (this.refs["errorMessage"]) {
-      ReactDOM.findDOMNode<HTMLDivElement>(this.refs["errorMessage"]).focus();
+      (ReactDOM.findDOMNode(this.refs["errorMessage"]) as HTMLDivElement).focus();
     }
   }
 

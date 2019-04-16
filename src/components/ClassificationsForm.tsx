@@ -311,7 +311,7 @@ export default class ClassificationsForm extends React.Component<Classifications
       this.setState({ error });
       setTimeout(() => {
         if (this.refs["errorMessage"]) {
-          ReactDOM.findDOMNode<HTMLDivElement>(this.refs["errorMessage"]).focus();
+          (ReactDOM.findDOMNode(this.refs["errorMessage"]) as HTMLDivElement).focus();
         }
       }, 500);
       return;

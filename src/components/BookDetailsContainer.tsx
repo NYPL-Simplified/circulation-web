@@ -2,6 +2,7 @@ import * as React from "react";
 import { Store } from "redux";
 import BookDetailsTabContainer from "./BookDetailsTabContainer";
 import BookDetails from "./BookDetails";
+const BookDetailsElement = BookDetails as any;
 import { BookDetailsContainerProps } from "opds-web-client/lib/components/Root";
 import { Navigate } from "../interfaces";
 import { State } from "../reducers/index";
@@ -28,7 +29,7 @@ export default class BookDetailsContainer extends React.Component<BookDetailsCon
 
   render(): JSX.Element {
     let child = React.Children.only(this.props.children);
-    let book = React.createElement(BookDetails, child.props);
+    let book = React.createElement(BookDetailsElement, child.props);
 
     return (
       <div className="book-details-container">

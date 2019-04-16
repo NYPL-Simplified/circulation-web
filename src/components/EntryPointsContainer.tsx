@@ -2,6 +2,7 @@ import * as React from "react";
 import EntryPointsTabs from "./EntryPointsTabs";
 import { CollectionContainerProps } from "opds-web-client/lib/components/Root";
 import Collection from "opds-web-client/lib/components/Collection";
+const CollectionElement = Collection as any;
 
 /** Wrapper for `EntryPointsTabs`. This component is passed into the
     OPDSCatalog from opds-web-client. */
@@ -32,7 +33,7 @@ export default class EntryPointsContainer extends React.Component<CollectionCont
 
     collectionCopy.facetGroups = facetGroups;
     newProps.collection = collectionCopy;
-    const collection = React.createElement(Collection, newProps);
+    const collection = React.createElement(CollectionElement, newProps);
 
     return (
       <div className="entry-points-tab-container">
