@@ -6,6 +6,7 @@ import ErrorMessage from "./ErrorMessage";
 import LoadingIndicator from "opds-web-client/lib/components/LoadingIndicator";
 const Loader = LoadingIndicator as any;
 import CatalogLink from "opds-web-client/lib/components/CatalogLink";
+const CatalogLinkElement = CatalogLink as any;
 import CirculationEventsDownloadForm from "./CirculationEventsDownloadForm";
 import { CirculationEventData } from "../interfaces";
 import { FetchErrorData } from "opds-web-client/lib/interfaces";
@@ -87,9 +88,9 @@ export class CirculationEvents extends React.Component<CirculationEventsProps, C
             { this.props.events.map(event =>
               <tr key={event.id}>
                 <td>
-                  <CatalogLink bookUrl={event.book.url}>
+                  <CatalogLinkElement bookUrl={event.book.url}>
                     {event.book.title}
-                  </CatalogLink>
+                  </CatalogLinkElement>
                 </td>
                 <td>{this.formatType(event.type)}</td>
                 <td>{this.formatTime(event.time)}</td>

@@ -14,6 +14,7 @@ import {
   BookIcon,
 } from "@nypl/dgx-svg-icons";
 import CatalogLink from "opds-web-client/lib/components/CatalogLink";
+const CatalogLinkElement = CatalogLink as any;
 
 export interface Entry extends BookData {
   medium?: string;
@@ -307,7 +308,7 @@ export default class CustomListEntriesEditor extends React.Component<CustomListE
     }
 
     return (
-      <CatalogLink
+      <CatalogLinkElement
         collectionUrl={this.props.opdsFeedUrl}
         bookUrl={book.url}
         title={book.title}
@@ -315,7 +316,7 @@ export default class CustomListEntriesEditor extends React.Component<CustomListE
         className="btn inverted"
       >
         View details
-      </CatalogLink>
+      </CatalogLinkElement>
     );
   }
 

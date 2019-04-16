@@ -1,5 +1,6 @@
 import * as React from "react";
 import CatalogLink from "opds-web-client/lib/components/CatalogLink";
+const CatalogLinkElement = CatalogLink as any;
 import { FacetData } from "opds-web-client/lib/interfaces";
 import { PathFor } from "../interfaces";
 import {
@@ -62,11 +63,11 @@ export class EntryPointsTabs extends React.Component<EntryPointsTabsProps, {}> {
                 role="presentation"
                 className={`${activeClass} ${noSVGClass}`}
               >
-                <CatalogLink
+                <CatalogLinkElement
                   collectionUrl={url}
                   bookUrl={null}>
                   {svg}{label}
-                </CatalogLink>
+                </CatalogLinkElement>
               </li>
             );
           })

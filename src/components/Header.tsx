@@ -8,6 +8,7 @@ import { LibraryData, LibrariesData } from "../interfaces";
 import Admin from "../models/Admin";
 import EditableInput from "./EditableInput";
 import CatalogLink from "opds-web-client/lib/components/CatalogLink";
+const CatalogLinkElement = CatalogLink as any;
 import { Link } from "react-router";
 import { Navbar, Nav, NavItem } from "react-bootstrap";
 import { Router } from "opds-web-client/lib/interfaces";
@@ -94,31 +95,31 @@ export class Header extends React.Component<HeaderProps, HeaderState> {
           { this.context.library && this.context.library() &&
             <Nav>
               <li className="header-link">
-                <CatalogLink
+                <CatalogLinkElement
                   collectionUrl={"/" + this.context.library() + "/groups"}
                   bookUrl={null}
                   className={currentPathname.indexOf("/admin/web/collection") !== -1 ? "active-link" : ""}
                 >
                   Catalog
-                </CatalogLink>
+                </CatalogLinkElement>
               </li>
               <li className="header-link">
-                <CatalogLink
+                <CatalogLinkElement
                   collectionUrl={"/" + this.context.library() + "/admin/complaints"}
                   bookUrl={null}
                   className={currentPathname.indexOf("/admin/complaints") !== -1 ? "active-link" : ""}
                 >
                   Complaints
-                </CatalogLink>
+                </CatalogLinkElement>
               </li>
               <li className="header-link">
-                <CatalogLink
+                <CatalogLinkElement
                   collectionUrl={"/" + this.context.library() + "/admin/suppressed"}
                   bookUrl={null}
                   className={currentPathname.indexOf("/admin/suppressed") !== -1 ? "active-link" : ""}
                 >
                   Hidden Books
-                </CatalogLink>
+                </CatalogLinkElement>
               </li>
               <li className="header-link">
                 <Link
