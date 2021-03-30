@@ -43,7 +43,7 @@ export default class TroubleshootingPage extends React.Component<Troubleshooting
     this.goToTab = this.goToTab.bind(this);
   }
 
-  componentWillMount() {
+  componentDidMount() {
     document.title = "Circulation Manager - Troubleshooting";
   }
 

@@ -43,7 +43,7 @@ export class SelfTestsTabContainer extends TabContainer<SelfTestsTabContainerPro
     metadataServices: "Metadata Services"
   };
 
-  componentWillMount() {
+  componentDidMount() {
     this.props.fetchItems();
   }
 

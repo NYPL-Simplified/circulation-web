@@ -81,7 +81,7 @@ export class Classifications extends React.Component<ClassificationsProps, {}> {
     );
   }
 
-  componentWillMount() {
+  componentDidMount() {
     if (this.props.bookUrl) {
       this.props.fetchGenreTree("/admin/genres");
       this.props.fetchClassifications(this.classificationsUrl());

@@ -51,7 +51,7 @@ export class BookDetailsEditor extends React.Component<BookDetailsEditorProps, {
     this.refresh = this.refresh.bind(this);
   }
 
-  componentWillMount() {
+  componentDidMount() {
     if (this.props.bookUrl) {
       let bookAdminUrl = this.props.bookUrl.replace("works", "admin/works");
       this.props.fetchBook(bookAdminUrl);

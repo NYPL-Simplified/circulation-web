@@ -208,7 +208,7 @@ export class Lanes extends React.Component<LanesProps, LanesState> {
     }
   }
 
-  componentWillMount() {
+  componentDidMount() {
     if (this.props.fetchLanes) {
       this.props.fetchLanes();
     }

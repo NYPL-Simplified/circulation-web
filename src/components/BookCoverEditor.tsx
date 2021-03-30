@@ -57,7 +57,7 @@ export class BookCoverEditor extends React.Component<BookCoverEditorProps, {}> {
     this.renderCoverForm = this.renderCoverForm.bind(this);
   }
 
-  componentWillMount() {
+  componentDidMount() {
     if (this.props.clearPreview) {
       this.props.clearPreview();
     }

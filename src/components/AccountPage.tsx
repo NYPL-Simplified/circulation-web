@@ -34,7 +34,7 @@ export default class AccountPage extends React.Component<{}, {}> {
     );
   }
 
-  componentWillMount() {
+  componentDidMount() {
     document.title = "Circulation Manager - Account";
   }
 }

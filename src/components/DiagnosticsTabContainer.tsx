@@ -36,7 +36,7 @@ export class DiagnosticsTabContainer extends TabContainer<DiagnosticsTabContaine
     other: "Other"
   };
 
-  componentWillMount() {
+  componentDidMount() {
     this.props.fetchDiagnostics();
   }
 

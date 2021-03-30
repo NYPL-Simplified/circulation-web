@@ -34,8 +34,8 @@ export class Libraries extends GenericEditableConfigList<LibrariesData, LibraryD
     admin: PropTypes.object.isRequired
   };
 
-  componentWillMount() {
-    super.componentWillMount();
+  componentDidMount() {
+    super.componentDidMount();
     this.props.fetchLanguages();
   }
 

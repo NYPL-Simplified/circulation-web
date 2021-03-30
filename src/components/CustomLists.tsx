@@ -159,7 +159,7 @@ export class CustomLists extends React.Component<CustomListsProps, CustomListsSt
     );
   }
 
-  componentWillMount() {
+  componentDidMount() {
     if (this.props.fetchCustomLists) {
       this.props.fetchCustomLists();
     }
