@@ -111,20 +111,38 @@ export default class EditableInput extends React.Component<EditableInputProps, E
     return <p className="description" dangerouslySetInnerHTML={{__html: description}} />;
   }
 
-  componentWillReceiveProps(nextProps) {
-    let value = this.state.value;
-    let checked = this.state.checked;
+  // static getDerivedStateFromProps(props, state) {
+  //   let value = state.value;
+  //   console.log("INIT VAL", value);
+  //   let checked = state.checked;
+  //   let changed = false;
+  //   if (props.value !== value) {
+  //     value = props.value || "";
+  //     console.log("NEW VAL", value);
+  //     changed = true;
+  //   }
+  //   if (props.checked !== checked) {
+  //     checked = props.checked || false;
+  //     changed = true;
+  //   }
+  //   if (changed) {
+  //     return { value, checked };
+  //   }
+  // }
+  componentDidUpdate(prevProps, prevState) {
+    let value = prevState.value;
+    let checked = prevState.checked;
     let changed = false;
-    if (nextProps.value !== this.props.value) {
-      value = nextProps.value || "";
+    if (this.props.value !== value) {
+      value = this.props.value || "";
       changed = true;
     }
-    if (nextProps.checked !== this.props.checked) {
-      checked = nextProps.checked || false;
+    if (this.props.checked !== checked) {
+      checked = this.props.checked || false;
       changed = true;
     }
     if (changed) {
-      this.setState({ value, checked });
+      return { value, checked };
     }
   }
 
@@ -158,6 +176,7 @@ export default class EditableInput extends React.Component<EditableInputProps, E
 
   setValue(value) {
     this.setState({ value });
+    console.log(value, this.state.value);
   }
 
   clear() {
