@@ -163,6 +163,7 @@ describe("IndividualAdminEditForm", () => {
       const expectRole = (startingRoles, role, shouldBeChecked: boolean, shouldBeEnabled: boolean = true) => {
         let adminDataWithRoles = Object.assign({}, adminData, { roles: startingRoles });
         wrapper.setProps({ item: adminDataWithRoles });
+        wrapper.update();
         let input = editableInputByName(role);
         expect(input.props().checked).to.equal(shouldBeChecked);
         expect(input.props().disabled).to.equal(!shouldBeEnabled);
@@ -588,7 +589,7 @@ describe("IndividualAdminEditForm", () => {
 
       let newProps = {responseBody: "new admin", ...wrapper.props()};
       wrapper.setProps(newProps);
-
+      wrapper.update();
       emailInput = wrapper.find("input[name='email']");
       expect(emailInput.props().value).not.to.contain("newEmail");
     });
