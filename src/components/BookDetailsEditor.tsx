@@ -61,9 +61,9 @@ export class BookDetailsEditor extends React.Component<BookDetailsEditorProps, {
     }
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.bookUrl && nextProps.bookUrl !== this.props.bookUrl) {
-      let bookAdminUrl = nextProps.bookUrl.replace("works", "admin/works");
+  componentDidUpdate(prevProps, prevState) {
+    if (this.props.bookUrl && this.props.bookUrl !== prevProps.bookUrl) {
+      let bookAdminUrl = this.props.bookUrl.replace("works", "admin/works");
       this.props.fetchBook(bookAdminUrl);
     }
   }
