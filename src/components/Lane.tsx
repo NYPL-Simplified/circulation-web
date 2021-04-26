@@ -86,9 +86,6 @@ export default class Lane extends React.Component<LaneProps, LaneState> {
       this.setState({ expanded: this.state.expanded, visible: this.props.lane.visible });
     }
   }
-  // componentWillReceiveProps(newProps) {
-  //   this.setState({ expanded: this.state.expanded, visible: newProps.lane.visible });
-  // }
 
   toggleVisible(): void {
     const change: boolean = !this.state.visible;
