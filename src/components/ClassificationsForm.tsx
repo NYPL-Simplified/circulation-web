@@ -192,20 +192,20 @@ export default class ClassificationsForm extends React.Component<Classifications
     }
   }
 
-  componentWillReceiveProps(newProps) {
-    if (this.bookChanged(newProps.book)) {
-      this.setState({ audience: newProps.book.audience });
-      this.setState({ fiction: newProps.book.fiction });
-      this.setState({ genres: this.bookGenres(newProps.book) });
+  componentDidUpdate(prevProps, prevState) {
+    if (this.bookChanged(this.props.book, prevProps.book)) {
+      this.setState({ audience: this.props.book.audience });
+      this.setState({ fiction: this.props.book.fiction });
+      this.setState({ genres: this.bookGenres(this.props.book) });
     }
   }
 
-  bookChanged(newBook: BookData): boolean {
-    return newBook.audience !== this.props.book.audience ||
-           newBook.targetAgeRange[0] !== this.props.book.targetAgeRange[0] ||
-           newBook.targetAgeRange[1] !== this.props.book.targetAgeRange[1] ||
-           newBook.fiction !== this.props.book.fiction ||
-           newBook.categories.sort() !== this.props.book.categories.sort();
+  bookChanged(newBook: BookData, oldBook: BookData): boolean {
+    return oldBook.audience !== newBook.audience ||
+           oldBook.targetAgeRange[0] !== newBook.targetAgeRange[0] ||
+           oldBook.targetAgeRange[1] !== newBook.targetAgeRange[1] ||
+           oldBook.fiction !== newBook.fiction ||
+           oldBook.categories.sort() !== newBook.categories.sort();
   }
 
   bookGenres(book: BookData) {

@@ -10,7 +10,7 @@ import WithRemoveButton from "../WithRemoveButton";
 import GenreForm from "../GenreForm";
 import genreData from "./genreData";
 
-describe("ClassificationsForm", () => {
+describe.only("ClassificationsForm", () => {
   let wrapper;
   let instance;
   let bookData;
@@ -368,7 +368,6 @@ describe("ClassificationsForm", () => {
         categories: ["Cooking"]
       });
       wrapper.setProps({ book: newBookData });
-
       expect(wrapper.state("audience")).to.equal("Adult");
       expect(wrapper.state("fiction")).to.equal(false);
       expect(wrapper.state("genres")).to.deep.equal(["Cooking"]);
