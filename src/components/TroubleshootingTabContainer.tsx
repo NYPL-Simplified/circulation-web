@@ -24,8 +24,11 @@ export default class TroubleshootingTabContainer extends TabContainer<Troublesho
     };
   }
 
-  componentWillReceiveProps(newProps: TroubleshootingTabContainerProps) {
-    (newProps.tab !== this.props.tab) && this.route(newProps.tab, newProps.subtab);
+  // componentWillReceiveProps(newProps: TroubleshootingTabContainerProps) {
+  //   (newProps.tab !== this.props.tab) && this.route(newProps.tab, newProps.subtab);
+  // }
+  componentDidUpdate(prevProps: TroubleshootingTabContainerProps, prevState) {
+    (this.props.tab !== prevProps.tab) && this.route(this.props.tab, this.props.subtab);
   }
 
   handleSelect(event) {

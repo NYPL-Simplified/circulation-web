@@ -59,7 +59,7 @@ export default class IndividualAdminEditForm extends React.Component<
     this.renderForm = this.renderForm.bind(this);
     this.renderRoleForm = this.renderRoleForm.bind(this);
   }
-  
+
   componentDidUpdate(prevProps, prevState) {
     if (this.props.item && this.props.item !== prevProps.item) {
       this.setState({ admin: new Admin(this.props.item.roles || []) });
