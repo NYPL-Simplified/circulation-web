@@ -87,6 +87,7 @@ export default class AnnouncementsSection extends React.Component<AnnouncementsS
   renderForm(): JSX.Element {
     return (
       <AnnouncementForm
+        key={"announcement-form-" + this.state.editing?.id}
         add={this.addAnnouncement}
         content={this.state.editing?.content}
         start={this.state.editing?.start}

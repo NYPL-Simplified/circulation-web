@@ -33,9 +33,9 @@ export default class LibraryEditForm extends React.Component<LibraryEditFormProp
     this.submit = this.submit.bind(this);
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.responseBody && !nextProps.fetchError) {
-      clearForm([
+  async componentDidUpdate(oldProps, oldState) {
+    if (this.props.responseBody && !this.props.error) {
+      await clearForm([
         this.nameRef.current,
         this.shortNameRef.current,
         this.settingRef.current,
@@ -43,6 +43,16 @@ export default class LibraryEditForm extends React.Component<LibraryEditFormProp
       ]);
     }
   }
+  // componentWillReceiveProps(nextProps) {
+  //   if (nextProps.responseBody && !nextProps.fetchError) {
+  //     clearForm([
+  //       this.nameRef.current,
+  //       this.shortNameRef.current,
+  //       this.settingRef.current,
+  //       this.announcementsRef.current
+  //     ]);
+  //   }
+  // }
 
   adminNotAuthorized(setting): boolean {
     // The server has assigned each setting a level from 1 to 3, indicating what level of permissions

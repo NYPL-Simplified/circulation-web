@@ -6,7 +6,7 @@ import { shallow, mount } from "enzyme";
 
 import EditableInput from "../EditableInput";
 
-describe.only("EditableInput", () => {
+describe("EditableInput", () => {
   let wrapper;
 
   beforeEach(() => {
