@@ -59,13 +59,20 @@ export class SelfTests extends React.Component<SelfTestsProps, SelfTestsState> {
     this.props.getSelfTests();
   }
 
-  componentWillReceiveProps(nextProps: SelfTestsProps) {
-    let newTime = nextProps.item && nextProps.item.self_test_results && nextProps.item.self_test_results.start;
-    let oldTime = this.props.item && this.props.item.self_test_results && this.props.item.self_test_results.start;
+  componentDidUpdate(prevProps: SelfTestsProps, prevState) {
+    let newTime = this.props.item && this.props.item.self_test_results && this.props.item.self_test_results.start;
+    let oldTime = prevProps.item && prevProps.item.self_test_results && prevProps.item.self_test_results.start;
     if (!oldTime || (newTime > oldTime)) {
-      this.setState({ mostRecent: nextProps.item });
+      this.setState({ mostRecent: this.props.item });
     }
   }
+  // componentWillReceiveProps(nextProps: SelfTestsProps) {
+  //   let newTime = nextProps.item && nextProps.item.self_test_results && nextProps.item.self_test_results.start;
+  //   let oldTime = this.props.item && this.props.item.self_test_results && this.props.item.self_test_results.start;
+  //   if (!oldTime || (newTime > oldTime)) {
+  //     this.setState({ mostRecent: nextProps.item });
+  //   }
+  // }
 
   render(): JSX.Element {
     const integration: ServiceData = this.state.mostRecent;

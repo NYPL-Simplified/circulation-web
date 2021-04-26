@@ -37,7 +37,6 @@ export default class AnnouncementForm extends React.Component<
 > {
   constructor(props: AnnouncementFormProps) {
     super(props);
-    console.log("NEW AF", props.content);
     this.updateStartDate = this.updateStartDate.bind(this);
     this.updateEndDate = this.updateEndDate.bind(this);
     let [start, finish] = this.getDefaultDates();
@@ -98,7 +97,6 @@ export default class AnnouncementForm extends React.Component<
     // Restore the form to default dates and an empty content field.
     let [start, finish] = this.getDefaultDates();
     this.setState({ content: "", start: start, finish: finish });
-    console.log("HIT", this.state);
   }
   cancel(e: Event) {
     e.preventDefault();
@@ -112,57 +110,19 @@ export default class AnnouncementForm extends React.Component<
     }
   }
 
-  // shouldComponentUpdate(nextProps, nextState) {
-  //   console.log("SHOULDUPDATE");
-  //   return (nextProps.content?.length > 0 && nextProps.content !== this.props.content);
-  //   // console.log(this.props, this.state, nextProps, nextState);
-  // }
   componentDidUpdate(prevProps, prevState) {
     const { content, start, finish } = this.props;
-    console.log("CDU", prevState, this.propsimport os,psycopg2);
-    //   if (!state.content.length && (nextProps.content?.length > 0)) {
-    //     return {
-    //       content: nextProps.content,
-    //       start: formatDate(start),
-    //       finish: formatDate(finish),
-    //     };
-    //   }
-    // console.log("CDU", prevProps.content, prevState.content, this.props.content, this.state.content);
+    let clear = this.props.content === prevProps.content && !this.state.content.length;
+    if (!this.state.content.length && (this.props.content?.length > 0)) {
+      this.setState({
+        content: this.props.content,
+        start: formatDate(start),
+        finish: formatDate(finish),
+      });
+    }
   }
-  // static getDerivedStateFromProps(nextProps: AnnouncementFormProps, state) {
-  //   console.log("GDS", nextProps.content, state.content);
-  //   const { content, start, finish } = nextProps;
-  //   if (!state.content.length && (nextProps.content?.length > 0)) {
-  //     return {
-  //       content: nextProps.content,
-  //       start: formatDate(start),
-  //       finish: formatDate(finish),
-  //     };
-  //   }
-    // Switch from creating a new announcement to editing an existing one.
-    // if (this.props.content?.length > 0) {
-    // console.log(content);
-    // this.setState({
-    //   content: content,
-    //   start: this.formatDate(start),
-    //   finish: this.formatDate(finish),
-    // });
-    // console.log(this.state);
-    // }
-  // }
-  // componentWillReceiveProps(newProps: AnnouncementFormProps) {
-  //   // Switch from creating a new announcement to editing an existing one.
-  //   if (newProps.content?.length > 0) {
-  //     const { content, start, finish } = newProps;
-  //     this.setState({
-  //       content: content,
-  //       start: this.formatDate(start),
-  //       finish: this.formatDate(finish),
-  //     });
-  //   }
-  // }
+
   render(): JSX.Element {
-    console.log("RENDER", this.state.content);
     // None of the fields can be blank.  Content must be between 15 and 350 characters.
     let wrongLength =
       this.state.content.length < 15 || this.state.content.length >= 350;
@@ -177,7 +137,6 @@ export default class AnnouncementForm extends React.Component<
     return (
       <div className="announcement-form">
         <EditableInput
-          key="announcement-content"
           className={wrongLength && "wrong-length"}
           elementType="textarea"
           type="text"

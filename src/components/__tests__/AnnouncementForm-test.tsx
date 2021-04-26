@@ -8,7 +8,7 @@ import { mount } from "enzyme";
 import AnnouncementForm from "../AnnouncementForm";
 import EditableInput from "../EditableInput";
 
-describe.only("AnnouncementForm", () => {
+describe("AnnouncementForm", () => {
   let wrapper;
   let add;
   beforeEach(() => {
@@ -96,7 +96,6 @@ describe.only("AnnouncementForm", () => {
     expect(wrapper.state().finish).to.equal("2020-07-01");
   };
   let checkDefaultState = () => {
-    console.log(wrapper.state().content);
     expect(wrapper.state().content).to.equal("");
     expect(wrapper.state().start).to.equal(
       wrapper.instance().getDefaultDates()[0]
@@ -130,7 +129,7 @@ describe.only("AnnouncementForm", () => {
     checkDefaultState();
     checkDefaultValues();
   });
-  it.only("edits an existing announcement", () => {
+  it("edits an existing announcement", () => {
     wrapper.setProps({
       content:
         "Here is some sample content which comes out to over 15 characters.",
@@ -158,7 +157,7 @@ describe.only("AnnouncementForm", () => {
       "Here is an edited version of the content"
     );
     checkDefaultState();
-    // checkDefaultValues();
+    checkDefaultValues();
   });
   it("cancels editing an existing announcement", () => {
     let spyCancel = spy(wrapper.instance(), "cancel");
