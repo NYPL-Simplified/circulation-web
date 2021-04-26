@@ -139,7 +139,7 @@ export default class LaneEditor extends React.Component<LaneEditorProps, LaneEdi
       inheritParentRestrictions: this.props.lane && this.props.lane.inherit_parent_restrictions
     });
   }
-  
+
   hasChanges(): boolean {
     const nameChanged = (this.props.lane && this.props.lane.display_name !== this.state.name);
     let listsChanged = false;
