@@ -10,7 +10,7 @@ import WithRemoveButton from "../WithRemoveButton";
 import GenreForm from "../GenreForm";
 import genreData from "./genreData";
 
-describe.only("ClassificationsForm", () => {
+describe("ClassificationsForm", () => {
   let wrapper;
   let instance;
   let bookData;
