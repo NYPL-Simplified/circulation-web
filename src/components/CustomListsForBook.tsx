@@ -141,12 +141,12 @@ export class CustomListsForBook extends React.Component<CustomListsForBookProps,
     }
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (this.props.bookUrl !== nextProps.bookUrl) {
-      this.setState({ customLists: nextProps.customListsForBook });
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.bookUrl !== this.props.bookUrl) {
+      this.setState({ customLists: this.props.customListsForBook });
     }
   }
-
+  
   listsUrl() {
     return this.props.bookUrl.replace("works", "admin/works") + "/lists";
   }
