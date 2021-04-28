@@ -148,10 +148,16 @@ export default class SitewideSettingEditForm extends React.Component<SitewideSet
     await this.props.save(data);
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.responseBody && !nextProps.fetchError) {
+  componentDidUpdate(prevProps, prevState) {
+    let props = this.props as any;
+    if (props.responseBody && !props.fetchError) {
       clearForm(this.refs);
     }
   }
+  // componentWillReceiveProps(nextProps) {
+  //   if (nextProps.responseBody && !nextProps.fetchError) {
+  //     clearForm(this.refs);
+  //   }
+  // }
 
 }
