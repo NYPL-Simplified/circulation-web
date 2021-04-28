@@ -29,9 +29,6 @@ export default class LibraryRegistrationForm extends React.Component<LibraryRegi
       this.setState({ checked: this.props.checked });
     }
   }
-  // componentWillReceiveProps(nextProps): void {
-  //   this.setState({ checked: nextProps.checked });
-  // }
 
   render(): JSX.Element {
     const hasTerms = this.props.registrationData && (

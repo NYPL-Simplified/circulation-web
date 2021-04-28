@@ -196,17 +196,6 @@ export class Lanes extends React.Component<LanesProps, LanesState> {
     );
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.lanes && !this.props.lanes) {
-      const lanes = this.copyLanes(nextProps.lanes);
-      this.setState({
-        lanes,
-        draggingFrom: null,
-        draggableId: null,
-        orderChanged: false
-      });
-    }
-  }
 
   componentDidMount() {
     if (this.props.fetchLanes) {
@@ -214,6 +203,18 @@ export class Lanes extends React.Component<LanesProps, LanesState> {
     }
     if (this.props.fetchCustomLists) {
       this.props.fetchCustomLists();
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.props.lanes && !prevProps.lanes) {
+      const lanes = this.copyLanes(this.props.lanes);
+      this.setState({
+        lanes,
+        draggingFrom: null,
+        draggableId: null,
+        orderChanged: false
+      });
     }
   }
 
