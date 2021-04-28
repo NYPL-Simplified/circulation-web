@@ -68,11 +68,17 @@ export default class TextWithEditMode extends React.Component<TextWithEditModePr
     );
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.text !== this.props.text) {
-      this.setState({ text: nextProps.text, editMode: !nextProps.text });
+  componentDidUpdate(prevProps, prevState) {
+    if (this.props.text !== prevProps.text) {
+      this.setState({ text: this.props.text, editMode: !this.props.text });
     }
   }
+
+  // componentWillReceiveProps(nextProps) {
+  //   if (nextProps.text !== this.props.text) {
+  //     this.setState({ text: nextProps.text, editMode: !nextProps.text });
+  //   }
+  // }
 
   setText(text: string) {
     this.setState({ text });
