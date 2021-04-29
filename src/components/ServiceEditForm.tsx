@@ -63,34 +63,42 @@ export default class ServiceEditForm<T extends ServicesData> extends React.Compo
     this.renderLibrariesForm = this.renderLibrariesForm.bind(this);
   }
 
-  componentWillReceiveProps(newProps) {
-    let protocol = this.state.protocol;
-    let parentId = this.state.parentId;
-    let libraries = this.state.libraries;
-    if (newProps.item && newProps.item.protocol) {
-      if (!this.props.item || !this.props.item.protocol || (this.props.item.protocol !== newProps.item.protocol)) {
-        protocol = newProps.item.protocol;
+  componentDidUpdate(prevProps, prevState) {
+    let protocol = prevState.protocol;
+    let parentId = prevState.parentId;
+    let libraries = prevState.libraries;
+    let changed = false;
+    if (this.props.item && this.props.item.protocol) {
+      if (!prevProps.item || !prevProps.item.protocol || (prevProps.item.protocol !== this.props.item.protocol)) {
+        protocol = this.props.item.protocol;
+        changed = true;
       }
     }
-    if (!protocol && this.availableProtocols(newProps).length > 0) {
-        protocol = this.availableProtocols(newProps)[0].name;
+    if (!protocol && this.availableProtocols(this.props).length > 0) {
+        protocol = this.availableProtocols(this.props)[0].name;
+        changed = true;
     }
 
-    if (newProps.item && newProps.item.parent_id) {
-      if (!this.props.item || !this.props.item.parent_id || (this.props.item.parent_id !== newProps.item.parent_id)) {
-        parentId = newProps.item.parent_id;
+    if (this.props.item && this.props.item.parent_id) {
+      if (!prevProps.item || !prevProps.item.parent_id || (prevProps.item.parent_id !== this.props.item.parent_id)) {
+        parentId = this.props.item.parent_id;
+        changed = true;
       }
     }
 
-    if (newProps.item && newProps.item.libraries) {
-      if (!this.props.item || !this.props.item.libraries || (this.props.item.libraries !== newProps.item.libraries)) {
-        libraries = newProps.item.libraries;
+    if (this.props.item && this.props.item.libraries) {
+      if (!prevProps.item || !prevProps.item.libraries || (prevProps.item.libraries !== this.props.item.libraries)) {
+        libraries = this.props.item.libraries;
+        changed = true;
       }
     }
-    const newState = Object.assign({}, this.state, { protocol, parentId, libraries });
-    this.setState(newState);
 
-    if (newProps.responseBody && !newProps.fetchError) {
+    if (changed) {
+      const newState = Object.assign({}, prevState, { protocol, parentId, libraries });
+      this.setState(newState);
+    }
+
+    if ((this.props as any).responseBody && !(this.props as any).fetchError) {
       clearForm(this.refs);
     }
 
