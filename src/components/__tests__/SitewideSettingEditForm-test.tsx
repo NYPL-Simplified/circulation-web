@@ -190,6 +190,7 @@ describe("SitewideSettingEditForm", () => {
       wrapper.find("form").simulate("submit");
       let newProps = { responseBody: "new setting", ...wrapper.props() };
       wrapper.setProps(newProps);
+      wrapper.update();
 
       input = wrapper.find("input[name='value']");
       select = wrapper.find("select[name='key']");
