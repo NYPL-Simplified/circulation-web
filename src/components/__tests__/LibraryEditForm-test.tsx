@@ -296,6 +296,7 @@ describe("LibraryEditForm", () => {
       wrapper.simulate("submit");
       let newProps = { responseBody: "new library", ...wrapper.props() };
       wrapper.setProps(newProps);
+      wrapper.update();
 
       nameInput = wrapper.find("input[name='name']");
       expect(nameInput.props().value).to.equal("");
