@@ -167,6 +167,7 @@ describe("AnnouncementForm", () => {
       start: "07/01/2020",
       finish: "08/01/2020",
     });
+    wrapper.update();
     expect(wrapper.state().content).to.equal(
       "Here is some sample content which comes out to over 15 characters."
     );

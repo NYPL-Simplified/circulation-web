@@ -51,6 +51,7 @@ describe("CustomListsSidebar", () => {
     expect(desc.find("input").prop("checked")).to.be.false;
 
     wrapper.setProps({ sortOrder: "desc" });
+    wrapper.update();
     sortButtons = wrapper.find("fieldset");
     asc = sortButtons.find(".form-group").at(0);
     desc = sortButtons.find(".form-group").at(1);
