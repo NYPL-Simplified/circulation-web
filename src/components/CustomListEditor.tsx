@@ -161,45 +161,89 @@ export default class CustomListEditor extends React.Component<CustomListEditorPr
       this.setState({ title: "", entries: [], collections: [] });
     });
   }
+
   componentWillUnmount() {
     CustomListEditor.listener();
   }
 
-  componentWillReceiveProps(nextProps) {
-    // Note: This gets called after performing a search, at which point the
-    // state of the component can already have updates that need to be taken
-    // into account.
-    if (!nextProps.list && !this.props.list) {
-      // This is no current or previous list, so this is a new list.
-      this.setState({ title: "", entries: [], collections: []});
-    } else if (nextProps.list && (nextProps.listId !== this.props.listId)) {
-      // Update the state with the next list to edit.
-      this.setState({
-        title: nextProps.list && nextProps.list.title,
-        entries: (nextProps.list && nextProps.list.books) || [],
-        collections: (nextProps.list && nextProps.listCollections) || []
-      });
-    } else if (nextProps.list && nextProps.list.books && nextProps.list.books.length !== this.state.entries.length) {
-      let collections = this.state.collections;
-      if ((!this.props.list || !this.props.listCollections) && nextProps.list && nextProps.listCollections) {
-        collections = nextProps.listCollections;
-      }
-      let title = this.state.title ? this.state.title : nextProps.list.title;
-      this.setState({
-        title,
-        entries: nextProps.list.books,
-        collections: collections
-      });
-    } else if ((!this.props.list || !this.props.listCollections) && nextProps.list && nextProps.listCollections) {
-      this.setState({
-        title: this.state.title,
-        entries: this.state.entries,
-        collections: nextProps.listCollections
-      });
+  shouldComponentUpdate(nextProps, nextState) {
+    if (this.state.title || this.props.list || nextProps.list) {
+      return false;
     }
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    // Note: This gets called after performing a search, at which point the
+    // state of the component can already have updates that need to be taken
+    // into account.
+    let blankState = { title: "", entries: [], collections: [], entryPointSelected: "" };
+    let nonBlankValues = Object.values(prevState).filter(x => x && (x as any).length);
+    let isCurrentStateBlank = nonBlankValues.length === 0;
+        if (!this.props.list && !prevProps.list && !isCurrentStateBlank) {
+      // This is no current or previous list, so this is a new list.
+          this.setState(blankState);
+    } else if (this.props.list && (this.props.listId !== prevProps.listId)) {
+      // Update the state with the next list to edit.
+      this.setState({
+        title: this.props.list && this.props.list.title,
+        entries: (this.props.list && this.props.list.books) || [],
+        collections: (this.props.list && this.props.listCollections) || []
+      });
+    } else if (this.props.list && this.props.list.books && this.props.list.books.length !== prevState.entries.length) {
+      let collections = this.state.collections;
+      if ((!prevProps.list || !prevProps.listCollections) && this.props.list && this.props.listCollections) {
+        collections = this.props.listCollections;
+      }
+      let title = this.state.title ? this.state.title : this.props.list.title;
+      this.setState({
+        title,
+        entries: this.props.list.books,
+        collections: collections
+      });
+    } else if ((!prevProps.list || !prevProps.listCollections) && this.props.list && this.props.listCollections) {
+      this.setState({
+        title: this.state.title,
+        entries: this.state.entries,
+        collections: this.props.listCollections
+      });
+    }
+  }
+  // componentWillReceiveProps(nextProps) {
+  //   // Note: This gets called after performing a search, at which point the
+  //   // state of the component can already have updates that need to be taken
+  //   // into account.
+  //   if (!nextProps.list && !this.props.list) {
+  //     // This is no current or previous list, so this is a new list.
+  //     this.setState({ title: "", entries: [], collections: []});
+  //   } else if (nextProps.list && (nextProps.listId !== this.props.listId)) {
+  //     // Update the state with the next list to edit.
+  //     this.setState({
+  //       title: nextProps.list && nextProps.list.title,
+  //       entries: (nextProps.list && nextProps.list.books) || [],
+  //       collections: (nextProps.list && nextProps.listCollections) || []
+  //     });
+  //   } else if (nextProps.list && nextProps.list.books && nextProps.list.books.length !== this.state.entries.length) {
+  //     let collections = this.state.collections;
+  //     if ((!this.props.list || !this.props.listCollections) && nextProps.list && nextProps.listCollections) {
+  //       collections = nextProps.listCollections;
+  //     }
+  //     let title = this.state.title ? this.state.title : nextProps.list.title;
+  //     this.setState({
+  //       title,
+  //       entries: nextProps.list.books,
+  //       collections: collections
+  //     });
+  //   } else if ((!this.props.list || !this.props.listCollections) && nextProps.list && nextProps.listCollections) {
+  //     this.setState({
+  //       title: this.state.title,
+  //       entries: this.state.entries,
+  //       collections: nextProps.listCollections
+  //     });
+  //   }
+  // }
+
   isTitleEmpty(): boolean {
+    console.log(this.state.title);
     if (this.props.list?.title) {
       return false;
     } else {
