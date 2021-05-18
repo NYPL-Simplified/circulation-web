@@ -260,24 +260,22 @@ describe("CustomListEditor", () => {
       { id: "urn1" }, { id: "urn2" }
     ];
     let getEntriesStub = stub(CustomListEntriesEditor.prototype, "getEntries").returns(newEntries);
-    wrapper.setState({ title: "new list title" });
-    wrapper.update();
     let saveButton = wrapper.find(".save-or-cancel-list").find(Button).at(0);
-    console.log(saveButton.props());
+    wrapper.setState({ title: "new list title" });
     saveButton.simulate("click");
+
     expect(editCustomList.callCount).to.equal(1);
-    // getTextStub.restore();
-    // getEntriesStub.restore();
-    //
-    // wrapper.setProps({ responseBody: "5" });
-    // wrapper.update();
+    getTextStub.restore();
+    getEntriesStub.restore();
+
+    wrapper.setProps({ responseBody: "5" });
     // Let the call stack clear so the callback after editCustomList will run.
-    // const pause = (): Promise<void> => {
-    //     return new Promise<void>(resolve => setTimeout(resolve, 0));
-    // };
-    // await pause();
-    // expect(window.location.href).to.contain("edit");
-    // expect(window.location.href).to.contain("5");
+    const pause = (): Promise<void> => {
+        return new Promise<void>(resolve => setTimeout(resolve, 0));
+    };
+    await pause();
+    expect(window.location.href).to.contain("edit");
+    expect(window.location.href).to.contain("5");
   });
 
   it("cancels changes", () => {
