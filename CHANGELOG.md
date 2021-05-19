@@ -6,6 +6,10 @@
 
 - Updated the soon-to-be-deprecated React lifecycle methods.
 
+#### Fixed
+
+- Fixed another footer placement bug.
+
 ### v0.4.39
 
 #### Updated
