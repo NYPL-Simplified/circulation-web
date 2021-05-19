@@ -18,19 +18,6 @@ export interface AnnouncementFormState {
   id?: string;
 }
 
-const formatDate = (date: Date | string): string => {
-  if (!date || (typeof date === "string" && date.indexOf("/") === -1)) {
-    return date as any;
-  }
-  let [month, day, year] =
-    typeof date === "string"
-      ? date.split("/")
-      : date.toLocaleDateString("en-US").split("/");
-  return `${year}-${month.toString().length === 1 ? "0" + month : month}-${
-    day.toString().length === 1 ? "0" + day : day
-  }`;
-};
-
 export default class AnnouncementForm extends React.Component<
   AnnouncementFormProps,
   AnnouncementFormState
@@ -56,8 +43,8 @@ export default class AnnouncementForm extends React.Component<
     return [start, finish];
   }
   formatDate(date: Date | string): string {
-    if (!date || (typeof date === "string" && date.indexOf("/") === -1)) {
-      return date as any;
+    if (typeof date === "string" && date.indexOf("/") === -1) {
+      return date;
     }
     let [month, day, year] =
       typeof date === "string"
@@ -110,18 +97,17 @@ export default class AnnouncementForm extends React.Component<
     }
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    const { content, start, finish } = this.props;
-    let clear = this.props.content === prevProps.content && !this.state.content.length;
-    if (!this.state.content.length && (this.props.content?.length > 0)) {
+  UNSAFE_componentWillReceiveProps(newProps: AnnouncementFormProps) {
+    // Switch from creating a new announcement to editing an existing one.
+    if (newProps.content?.length > 0) {
+      const { content, start, finish } = newProps;
       this.setState({
-        content: this.props.content,
-        start: formatDate(start),
-        finish: formatDate(finish),
+        content: content,
+        start: this.formatDate(start),
+        finish: this.formatDate(finish),
       });
     }
   }
-
   render(): JSX.Element {
     // None of the fields can be blank.  Content must be between 15 and 350 characters.
     let wrongLength =
