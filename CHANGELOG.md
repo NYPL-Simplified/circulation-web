@@ -1,5 +1,11 @@
 ## Changelog
 
+### v0.4.40
+
+#### Updated
+
+- Updated the soon-to-be-deprecated React lifecycle methods.
+
 ### v0.4.39
 
 #### Updated
