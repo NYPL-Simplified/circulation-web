@@ -1,10 +1,29 @@
 ## Changelog
 
-### v0.4.40
+### v0.5.1
 
 #### Updated
 
 - Updated the soon-to-be-deprecated React lifecycle methods.
+
+### v0.5.0
+
+#### Updated
+
+- Updated `opds-web-client` to version `^0.6.1`.
+
+#### Fixed
+
+- Updated npm packages to fix security issues.
+- Minor updates to types to run and build the project.
+
+### v0.4.41
+
+#### Added
+
+- Added a custom Mocha reporter so that a formatted list of suites and tests can be generated via the CLI.
+
+### v0.4.40
 
 #### Fixed
 
