@@ -1,10 +1,26 @@
 ## Changelog
 
-### v0.5.1
+### v0.5.2
 
 #### Updated
 
 - Updated the soon-to-be-deprecated React lifecycle methods.
+
+#### (Prerelease) Updated
+
+- Updated the README.
+- Added a Github pull request template.
+
+### v0.5.1
+
+#### Fixed
+
+- Made footer consistent across pages.
+- Ensured footer was not covering other page elements.
+
+#### Updated
+
+- Updated the opds-web-client to version 0.6.2.
 
 ### v0.5.0
 
