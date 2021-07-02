@@ -102,7 +102,7 @@ export class Complaints extends React.Component<ComplaintsProps, {}> {
     );
   }
 
-  componentWillMount() {
+  componentDidMount() {
     if (this.props.bookUrl) {
       this.props.fetchComplaints(this.complaintsUrl());
     }

@@ -126,6 +126,7 @@ describe("LibraryRegistrationForm", () => {
     expect(checkbox.prop("checked")).to.be.true;
 
     wrapper.setProps({ checked: false });
+    wrapper.update();
     checkbox = wrapper.find("input");
     expect(checkbox.prop("checked")).not.to.be.true;
   });

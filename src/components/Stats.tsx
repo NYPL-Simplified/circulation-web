@@ -64,7 +64,7 @@ export class Stats extends React.Component<StatsProps, {}> {
     );
   }
 
-  componentWillMount() {
+  componentDidMount() {
     if (this.props.fetchStats) {
       this.props.fetchStats();
     }

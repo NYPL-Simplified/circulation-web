@@ -24,8 +24,10 @@ export default class LibraryRegistrationForm extends React.Component<LibraryRegi
     this.toggleChecked = this.toggleChecked.bind(this);
   }
 
-  componentWillReceiveProps(nextProps): void {
-    this.setState({ checked: nextProps.checked });
+  componentDidUpdate(prevProps, prevState): void {
+    if (this.state.checked !== this.props.checked) {
+      this.setState({ checked: this.props.checked });
+    }
   }
 
   render(): JSX.Element {

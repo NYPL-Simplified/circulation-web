@@ -33,8 +33,8 @@ export default class LibraryEditForm extends React.Component<LibraryEditFormProp
     this.submit = this.submit.bind(this);
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.responseBody && !nextProps.fetchError) {
+  componentDidUpdate(oldProps, oldState) {
+    if (this.props.responseBody && !this.props.error) {
       clearForm([
         this.nameRef.current,
         this.shortNameRef.current,

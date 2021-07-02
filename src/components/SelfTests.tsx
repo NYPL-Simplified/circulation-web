@@ -62,17 +62,17 @@ export class SelfTests extends React.Component<SelfTestsProps, SelfTestsState> {
     this.props.getSelfTests();
   }
 
-  componentWillReceiveProps(nextProps: SelfTestsProps) {
+  componentDidUpdate(prevProps: SelfTestsProps, prevState) {
     const newTime =
-      nextProps.item &&
-      nextProps.item.self_test_results &&
-      nextProps.item.self_test_results.start;
-    const oldTime =
       this.props.item &&
       this.props.item.self_test_results &&
       this.props.item.self_test_results.start;
+    const oldTime =
+      prevProps.item &&
+      prevProps.item.self_test_results &&
+      prevProps.item.self_test_results.start;
     if (!oldTime || newTime > oldTime) {
-      this.setState({ mostRecent: nextProps.item });
+      this.setState({ mostRecent: this.props.item });
     }
   }
 

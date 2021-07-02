@@ -108,7 +108,7 @@ export class CirculationEvents extends React.Component<CirculationEventsProps, C
     );
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this._isMounted = true;
     if (!this.props.library) {
       this.fetchAndQueue();

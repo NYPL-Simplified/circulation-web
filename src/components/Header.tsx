@@ -200,7 +200,7 @@ export class Header extends React.Component<HeaderProps, HeaderState> {
     );
   }
 
-  componentWillMount() {
+  componentDidMount() {
     if (this.props.fetchLibraries) {
       this.props.fetchLibraries();
     }

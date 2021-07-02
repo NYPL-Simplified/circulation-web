@@ -240,24 +240,24 @@ export class Lanes extends React.Component<LanesProps, LanesState> {
     );
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.lanes && !this.props.lanes) {
-      const lanes = this.copyLanes(nextProps.lanes);
+  componentDidMount() {
+    if (this.props.fetchLanes) {
+      this.props.fetchLanes();
+    }
+    if (this.props.fetchCustomLists) {
+      this.props.fetchCustomLists();
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.props.lanes && !prevProps.lanes) {
+      const lanes = this.copyLanes(this.props.lanes);
       this.setState({
         lanes,
         draggingFrom: null,
         draggableId: null,
         orderChanged: false,
       });
-    }
-  }
-
-  componentWillMount() {
-    if (this.props.fetchLanes) {
-      this.props.fetchLanes();
-    }
-    if (this.props.fetchCustomLists) {
-      this.props.fetchCustomLists();
     }
   }
 

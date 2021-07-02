@@ -63,6 +63,9 @@ export function formatString(
 
 /** Compares two arrays to see whether they contain the same items.  (The order of the items doesn't matter.) */
 export function isEqual(array1: Array<any>, array2: Array<any>): boolean {
+  if (!array1 || !array2) {
+    return false;
+  }
   return (
     array1.length === array2.length &&
     array1.every((x) => array2.indexOf(x) >= 0)

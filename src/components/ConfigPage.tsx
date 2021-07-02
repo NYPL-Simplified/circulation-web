@@ -48,7 +48,7 @@ export default class ConfigPage extends React.Component<ConfigPageProps, {}> {
     );
   }
 
-  componentWillMount() {
+  componentDidMount() {
     document.title = "Circulation Manager - Configuration";
   }
 }

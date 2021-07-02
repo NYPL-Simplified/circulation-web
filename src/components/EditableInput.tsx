@@ -111,7 +111,7 @@ export default class EditableInput extends React.Component<EditableInputProps, E
     return <p className="description" dangerouslySetInnerHTML={{__html: description}} />;
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     let value = this.state.value;
     let checked = this.state.checked;
     let changed = false;

@@ -171,7 +171,7 @@ export class CustomLists extends React.Component<
     return <CustomListEditor {...{ ...editorProps, ...extraProps }} />;
   }
 
-  componentWillMount() {
+  componentDidMount() {
     if (this.props.fetchCustomLists) {
       this.props.fetchCustomLists();
     }
@@ -188,26 +188,30 @@ export class CustomLists extends React.Component<
     this.props.fetchLanguages();
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentDidUpdate(prevProps, prevState) {
     // If we've fetched lists but we're not on the edit or create page,
     // redirect to the edit page for the first list, or the create page
     // if there are no lists.
-    if (!nextProps.editOrCreate && nextProps.lists && !nextProps.fetchError) {
-      if (nextProps.lists.length === 0) {
+    if (
+      !this.props.editOrCreate &&
+      this.props.lists &&
+      !this.props.fetchError
+    ) {
+      if (this.props.lists.length === 0) {
         window.location.href += "/create";
       } else {
-        const firstList = this.sortedLists(nextProps.lists)[0];
+        const firstList = this.sortedLists(this.props.lists)[0];
         window.location.href += "/edit/" + firstList.id;
       }
     }
 
     // If we switched lists, fetch the details for the new list.
     if (
-      nextProps.identifier &&
-      nextProps.fetchCustomListDetails &&
-      nextProps.identifier !== this.props.identifier
+      this.props.identifier &&
+      this.props.fetchCustomListDetails &&
+      this.props.identifier !== prevProps.identifier
     ) {
-      nextProps.fetchCustomListDetails(nextProps.identifier);
+      this.props.fetchCustomListDetails(this.props.identifier);
     }
   }
 

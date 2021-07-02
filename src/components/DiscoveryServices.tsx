@@ -52,8 +52,8 @@ export class DiscoveryServices extends GenericEditableConfigList<DiscoveryServic
     };
   }
 
-  componentWillMount() {
-    super.componentWillMount();
+  componentDidMount() {
+    super.componentDidMount();
     if (this.props.fetchLibraryRegistrations) {
       this.props.fetchLibraryRegistrations();
     }

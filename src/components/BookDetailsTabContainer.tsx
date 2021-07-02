@@ -29,8 +29,8 @@ export class BookDetailsTabContainer extends TabContainer<BookDetailsTabContaine
     this.props.clearBook();
   }
 
-  componentWillReceiveProps(newProps) {
-    if (newProps.bookUrl !== this.props.bookUrl) {
+  componentDidUpdate(prevProps, prevState) {
+    if (this.props.bookUrl !== prevProps.bookUrl) {
       this.props.clearBook();
     }
   }

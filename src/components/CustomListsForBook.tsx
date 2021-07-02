@@ -132,7 +132,7 @@ export class CustomListsForBook extends React.Component<CustomListsForBookProps,
     }
   }
 
-  componentWillMount() {
+  componentDidMount() {
     if (this.props.bookUrl) {
       this.props.fetchCustomListsForBook(this.listsUrl());
       if (!this.props.allCustomLists) {
@@ -141,9 +141,9 @@ export class CustomListsForBook extends React.Component<CustomListsForBookProps,
     }
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (this.props.bookUrl !== nextProps.bookUrl) {
-      this.setState({ customLists: nextProps.customListsForBook });
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.bookUrl !== this.props.bookUrl) {
+      this.setState({ customLists: this.props.customListsForBook });
     }
   }
 

@@ -157,7 +157,7 @@ describe("CirculationEvents", () => {
 
     it("fetches and queues on mount", () => {
       let fetchAndQueue = stub(wrapper.instance(), "fetchAndQueue");
-      wrapper.instance().componentWillMount();
+      wrapper.instance().componentDidMount();
       expect(fetchAndQueue.callCount).to.equal(1);
       fetchAndQueue.restore();
     });
@@ -182,7 +182,7 @@ describe("CirculationEvents", () => {
       let fetchAndQueue = stub(wrapper.instance(), "fetchAndQueue");
       expect(fetchAndQueue.callCount).to.equal(0);
       fetchAndQueue.restore();
-      wrapper.instance().componentWillMount();
+      wrapper.instance().componentDidMount();
     });
 
     describe("fetchAndQueue", () => {

@@ -831,6 +831,7 @@ describe("ServiceEditForm", () => {
     it("calls handleData", () => {
       let handleData = spy(wrapper.instance(), "handleData");
       wrapper.setProps({ item: serviceData });
+      wrapper.update();
       // The first two buttons are the edit and remove buttons for this component
       // which only contains one object as data.
       wrapper.find(Button).at(2).simulate("click");
@@ -842,6 +843,7 @@ describe("ServiceEditForm", () => {
 
     it("submits data", () => {
       wrapper.setProps({ item: serviceData });
+      wrapper.update();
 
       // The first two buttons are the edit and remove buttons for this component
       // which only contains one object as data.
@@ -872,6 +874,7 @@ describe("ServiceEditForm", () => {
       wrapper.simulate("submit");
       let newProps = { responseBody: "new service", ...wrapper.props() };
       wrapper.setProps(newProps);
+      wrapper.update();
 
       nameInput = wrapper.find("input[name='name']");
       expect(nameInput.props().value).to.equal("");

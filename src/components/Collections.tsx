@@ -60,8 +60,8 @@ export class Collections extends GenericEditableConfigList<CollectionsData, Coll
     };
   }
 
-  componentWillMount() {
-    super.componentWillMount();
+  componentDidMount() {
+    super.componentDidMount();
     if (this.props.fetchLibraryRegistrations) {
       this.props.fetchLibraryRegistrations();
     }

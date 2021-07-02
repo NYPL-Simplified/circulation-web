@@ -165,7 +165,7 @@ export default class CustomListEditor extends React.Component<CustomListEditorPr
     CustomListEditor.listener();
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     // Note: This gets called after performing a search, at which point the
     // state of the component can already have updates that need to be taken
     // into account.

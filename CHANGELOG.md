@@ -1,5 +1,11 @@
 ## Changelog
 
+### v0.5.2
+
+#### Updated
+
+- Updated the soon-to-be-deprecated React lifecycle methods.
+
 #### (Prerelease) Updated
 
 - Updated the README.

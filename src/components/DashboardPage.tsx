@@ -50,7 +50,7 @@ export default class DashboardPage extends React.Component<DashboardPageProps, {
     );
   }
 
-  componentWillMount() {
+  componentDidMount() {
     document.title = "Circulation Manager - Dashboard";
   }
 }
