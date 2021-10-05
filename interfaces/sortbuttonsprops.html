@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>ExtraFormSectionProps | simplified-circulation-web</title>
+	<title>SortButtonsProps | simplified-circulation-web</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,32 +56,21 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="extraformsectionprops.html">ExtraFormSectionProps</a>
+					<a href="sortbuttonsprops.html">SortButtonsProps</a>
 				</li>
 			</ul>
-			<h1>Interface ExtraFormSectionProps&lt;T, U&gt;</h1>
+			<h1>Interface SortButtonsProps</h1>
 		</div>
 	</div>
 </header>
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
-			<section class="tsd-panel tsd-type-parameters">
-				<h3>Type parameters</h3>
-				<ul class="tsd-type-parameters">
-					<li>
-						<h4>T</h4>
-					</li>
-					<li>
-						<h4>U</h4>
-					</li>
-				</ul>
-			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">ExtraFormSectionProps</span>
+						<span class="target">SortButtonsProps</span>
 					</li>
 				</ul>
 			</section>
@@ -92,10 +81,8 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="extraformsectionprops.html#currentvalue" class="tsd-kind-icon">current<wbr>Value</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="extraformsectionprops.html#disabled" class="tsd-kind-icon">disabled</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="extraformsectionprops.html#error" class="tsd-kind-icon">error</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="extraformsectionprops.html#setting" class="tsd-kind-icon">setting</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="sortbuttonsprops.html#changesort" class="tsd-kind-icon">change<wbr>Sort</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="sortbuttonsprops.html#sortorder" class="tsd-kind-icon">sort<wbr>Order</a></li>
 							</ul>
 						</section>
 					</div>
@@ -104,42 +91,37 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="currentvalue" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> current<wbr>Value</h3>
-					<div class="tsd-signature tsd-kind-icon">current<wbr>Value<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<a name="changesort" class="tsd-anchor"></a>
+					<h3>change<wbr>Sort</h3>
+					<div class="tsd-signature tsd-kind-icon">change<wbr>Sort<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/NYPL-Simplified/circulation-web/blob/957425d/src/components/EditableConfigList.tsx#L70">src/components/EditableConfigList.tsx:70</a></li>
+							<li>Defined in <a href="https://github.com/NYPL-Simplified/circulation-web/blob/957425d/src/components/SortButtons.tsx#L5">src/components/SortButtons.tsx:5</a></li>
 						</ul>
 					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="disabled" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> disabled</h3>
-					<div class="tsd-signature tsd-kind-icon">disabled<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/NYPL-Simplified/circulation-web/blob/957425d/src/components/EditableConfigList.tsx#L68">src/components/EditableConfigList.tsx:68</a></li>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-siganture">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-property tsd-is-not-exported">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+									</li>
+								</ul>
+							</li>
 						</ul>
-					</aside>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="error" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> error</h3>
-					<div class="tsd-signature tsd-kind-icon">error<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">FetchErrorData</span></div>
+					<a name="sortorder" class="tsd-anchor"></a>
+					<h3>sort<wbr>Order</h3>
+					<div class="tsd-signature tsd-kind-icon">sort<wbr>Order<span class="tsd-signature-symbol">:</span> <a href="../globals.html#sortorder" class="tsd-signature-type">SortOrder</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/NYPL-Simplified/circulation-web/blob/957425d/src/components/EditableConfigList.tsx#L69">src/components/EditableConfigList.tsx:69</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="setting" class="tsd-anchor"></a>
-					<h3>setting</h3>
-					<div class="tsd-signature tsd-kind-icon">setting<span class="tsd-signature-symbol">:</span> <a href="settingdata.html" class="tsd-signature-type">SettingData</a></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/NYPL-Simplified/circulation-web/blob/957425d/src/components/EditableConfigList.tsx#L67">src/components/EditableConfigList.tsx:67</a></li>
+							<li>Defined in <a href="https://github.com/NYPL-Simplified/circulation-web/blob/957425d/src/components/SortButtons.tsx#L6">src/components/SortButtons.tsx:6</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -157,20 +139,14 @@
 				<ul class="before-current">
 				</ul>
 				<ul class="current">
-					<li class="current tsd-kind-interface tsd-has-type-parameter">
-						<a href="extraformsectionprops.html" class="tsd-kind-icon">Extra<wbr>Form<wbr>Section<wbr>Props</a>
+					<li class="current tsd-kind-interface">
+						<a href="sortbuttonsprops.html" class="tsd-kind-icon">Sort<wbr>Buttons<wbr>Props</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="extraformsectionprops.html#currentvalue" class="tsd-kind-icon">current<wbr>Value</a>
+								<a href="sortbuttonsprops.html#changesort" class="tsd-kind-icon">change<wbr>Sort</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="extraformsectionprops.html#disabled" class="tsd-kind-icon">disabled</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="extraformsectionprops.html#error" class="tsd-kind-icon">error</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="extraformsectionprops.html#setting" class="tsd-kind-icon">setting</a>
+								<a href="sortbuttonsprops.html#sortorder" class="tsd-kind-icon">sort<wbr>Order</a>
 							</li>
 						</ul>
 					</li>
