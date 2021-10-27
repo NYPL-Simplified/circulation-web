@@ -142,6 +142,8 @@ export default function CustomListEditorBody({
   const crawlable = `${draftTitle ? `lists/${draftTitle}/` : ""}crawlable`;
   const opdsFeedUrl = `${library?.short_name}/${crawlable}`;
 
+  console.log("entries in body -->", draftEntries);
+
   return (
     <div className="custom-list-editor-body">
       <section>

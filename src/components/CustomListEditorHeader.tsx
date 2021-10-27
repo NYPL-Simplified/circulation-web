@@ -9,7 +9,7 @@ export interface CustomListEditorHeaderProps {
   list?: CollectionData;
   listId?: string | number;
   hasListInfoChanged: boolean;
-  listEntries: Entry[];
+  draftEntries: Entry[];
   setDraftTitle: (title) => void;
   setDraftEntries: (entries) => void;
   saveFormData: () => void;
@@ -23,13 +23,13 @@ export default function CustomListEditorHeader({
   setDraftTitle,
   setDraftEntries,
   saveFormData,
-  listEntries,
+  draftEntries,
 }: CustomListEditorHeaderProps) {
   const titleOrEntriesIsBlank = (): boolean => {
     if (
       draftTitle === "" ||
       draftTitle === "list title" ||
-      !listEntries.length
+      !draftEntries.length
     ) {
       return true;
     }

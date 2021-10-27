@@ -7,7 +7,7 @@ import * as Enzyme from "enzyme";
 import CustomListEditorHeader from "../CustomListEditorHeader";
 import TextWithEditMode from "../TextWithEditMode";
 
-describe("CustomListEditorHeader", () => {
+describe.only("CustomListEditorHeader", () => {
   let wrapper;
   let setDraftTitle;
   let setDraftEntries;
@@ -52,7 +52,7 @@ describe("CustomListEditorHeader", () => {
         draftTitle={list.title}
         list={list}
         listId={list.id}
-        listEntries={list.books}
+        draftEntries={list.books}
         hasListInfoChanged={false}
         setDraftTitle={setDraftTitle}
         setDraftEntries={setDraftEntries}
@@ -88,7 +88,7 @@ describe("CustomListEditorHeader", () => {
     expect(saveListButton.props().disabled).to.equal(true);
     wrapper.setProps({
       draftTitle: "original list title",
-      listEntries: [],
+      draftEntries: [],
     });
     saveListButton = wrapper.find(".save-or-cancel-list").children().at(0);
     expect(saveListButton.props().disabled).to.equal(true);

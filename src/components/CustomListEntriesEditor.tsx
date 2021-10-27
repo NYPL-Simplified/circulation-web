@@ -66,6 +66,8 @@ export default class CustomListEntriesEditor extends React.Component<
   }
 
   render(): JSX.Element {
+    console.log("entries in entries editor -->", this.props.entries);
+
     const {
       entries,
       deleted,
@@ -303,6 +305,7 @@ export default class CustomListEntriesEditor extends React.Component<
 
   UNSAFE_componentWillReceiveProps(nextProps) {
     let deleted = this.state.deleted;
+    console.log("deleted -->", deleted);
     let added = this.state.added;
     const totalVisibleEntries = this.state.totalVisibleEntries;
     // We need to reset the deleted and added entries if we are moving to a new list.

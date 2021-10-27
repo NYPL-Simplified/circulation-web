@@ -70,6 +70,13 @@ export default function CustomListEditor({
     }
   }, [list]);
 
+  React.useEffect(() => {
+    if (!list && responseBody) {
+      window.location.href =
+        "/admin/web/lists/" + library.short_name + "/edit/" + responseBody;
+    }
+  }, [responseBody]);
+
   const saveFormData = () => {
     if (!draftTitle || !draftEntries.length) {
       setShowSaveError(true);
@@ -88,13 +95,6 @@ export default function CustomListEditor({
       editCustomList(data, listId && String(listId));
     }
   };
-
-  React.useEffect(() => {
-    if (!list && responseBody) {
-      window.location.href =
-        "/admin/web/lists/" + library.short_name + "/edit/" + responseBody;
-    }
-  }, [responseBody]);
 
   /** hasListInfoChanged checks whether the user has updated the
    * list's title, collections, or entries to determine whether the
@@ -143,6 +143,8 @@ export default function CustomListEditor({
     return false;
   };
 
+  console.log("entries in editor -->", draftEntries);
+
   return (
     <div className="custom-list-editor">
       {showSaveError && (
@@ -158,7 +160,7 @@ export default function CustomListEditor({
         listId={listId && listId}
         saveFormData={saveFormData}
         hasListInfoChanged={hasListInfoChanged()}
-        listEntries={draftEntries}
+        draftEntries={draftEntries}
       />
       <CustomListEditorBody
         collections={collections}
