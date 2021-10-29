@@ -16,6 +16,7 @@ describe("CustomListEditorBody", () => {
   let setDeletedListEntries;
   let setDraftCollections;
   let setDraftEntries;
+  let setCancelClicked;
   const languages = {
     eng: ["English"],
     spa: ["Spanish", "Castilian"],
@@ -94,6 +95,7 @@ describe("CustomListEditorBody", () => {
     search = stub();
     loadMoreSearchResults = stub();
     loadMoreEntries = stub();
+    setCancelClicked = stub();
     wrapper = Enzyme.mount(
       <CustomListEditorBody
         isFetchingMoreCustomListEntries={false}
@@ -111,6 +113,8 @@ describe("CustomListEditorBody", () => {
         setDeletedListEntries={setDeletedListEntries}
         setDraftCollections={setDraftCollections}
         setDraftEntries={setDraftEntries}
+        cancelClicked={false}
+        setCancelClicked={setCancelClicked}
       />
     );
   });

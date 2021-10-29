@@ -7,10 +7,11 @@ import * as Enzyme from "enzyme";
 import CustomListEditorHeader from "../CustomListEditorHeader";
 import TextWithEditMode from "../TextWithEditMode";
 
-describe.only("CustomListEditorHeader", () => {
+describe("CustomListEditorHeader", () => {
   let wrapper;
   let setDraftTitle;
   let setDraftEntries;
+  let setCancelClicked;
   let saveFormData;
   let list;
 
@@ -18,6 +19,7 @@ describe.only("CustomListEditorHeader", () => {
     setDraftTitle = stub();
     setDraftEntries = stub();
     saveFormData = stub();
+    setCancelClicked = stub();
     list = {
       id: "1",
       url: "some url",
@@ -57,6 +59,7 @@ describe.only("CustomListEditorHeader", () => {
         setDraftTitle={setDraftTitle}
         setDraftEntries={setDraftEntries}
         saveFormData={saveFormData}
+        setCancelClicked={setCancelClicked}
       />
     );
   });

@@ -25,12 +25,14 @@ export interface CustomListEditorBodyProps {
   draftTitle?: string;
   draftEntries?: Entry[];
   draftCollections?: AdminCollectionData[];
+  cancelClicked: boolean;
   loadMoreEntries: (url: string) => Promise<CollectionData>;
   loadMoreSearchResults: (url: string) => Promise<CollectionData>;
   search: (url: string) => Promise<CollectionData>;
   setDeletedListEntries: (entries: Entry[]) => void;
-  setDraftCollections: (collections) => void;
+  setDraftCollections: (collections: AdminCollectionData[]) => void;
   setDraftEntries: (entries: Entry[]) => void;
+  setCancelClicked: (wasCancelClicked: boolean) => void;
 }
 
 export default function CustomListEditorBody({
@@ -48,12 +50,14 @@ export default function CustomListEditorBody({
   draftTitle,
   draftEntries,
   draftCollections,
+  cancelClicked,
   loadMoreEntries,
   loadMoreSearchResults,
   search,
   setDeletedListEntries,
   setDraftCollections,
   setDraftEntries,
+  setCancelClicked,
 }: CustomListEditorBodyProps) {
   const [entryPointSelected, setEntryPointSelected] = React.useState<string>(
     "all"
@@ -142,8 +146,6 @@ export default function CustomListEditorBody({
   const crawlable = `${draftTitle ? `lists/${draftTitle}/` : ""}crawlable`;
   const opdsFeedUrl = `${library?.short_name}/${crawlable}`;
 
-  console.log("entries in body -->", draftEntries);
-
   return (
     <div className="custom-list-editor-body">
       <section>
@@ -197,6 +199,8 @@ export default function CustomListEditorBody({
         opdsFeedUrl={opdsFeedUrl}
         entryCount={entryCount}
         listId={listId}
+        cancelClicked={cancelClicked}
+        setCancelClicked={setCancelClicked}
       />
     </div>
   );

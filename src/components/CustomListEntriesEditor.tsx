@@ -30,6 +30,8 @@ export interface CustomListEntriesEditorProps
   nextPageUrl?: string;
   entryCount?: string;
   listId?: string | number;
+  cancelClicked?: boolean;
+  setCancelClicked?: (wasCancelClicked: boolean) => void;
 }
 
 export interface CustomListEntriesEditorState {
@@ -66,8 +68,6 @@ export default class CustomListEntriesEditor extends React.Component<
   }
 
   render(): JSX.Element {
-    console.log("entries in entries editor -->", this.props.entries);
-
     const {
       entries,
       deleted,
@@ -90,7 +90,10 @@ export default class CustomListEntriesEditor extends React.Component<
 
     if (totalVisibleEntries && totalEntriesServer) {
       if (entries.length) {
-        entriesCount = totalEntriesServer - deleted.length + added.length;
+        // entriesCount = totalEntriesServer - deleted.length + added.length;
+        // FOLLOWING ENTRIESCOUNT VAR DOES NOT WORK CORRECTLY
+        entriesCount =
+          totalEntriesServer + (entries.length - totalEntriesServer);
         displayTotal = `1 - ${entries.length} of ${entriesCount}`;
         booksText = entriesCount === 1 ? "Book" : "Books";
         entryListDisplay = `Displaying ${displayTotal} ${booksText}`;
@@ -305,7 +308,6 @@ export default class CustomListEntriesEditor extends React.Component<
 
   UNSAFE_componentWillReceiveProps(nextProps) {
     let deleted = this.state.deleted;
-    console.log("deleted -->", deleted);
     let added = this.state.added;
     const totalVisibleEntries = this.state.totalVisibleEntries;
     // We need to reset the deleted and added entries if we are moving to a new list.
@@ -317,45 +319,59 @@ export default class CustomListEntriesEditor extends React.Component<
         entries: nextProps.entries,
         deleted: deleted,
         added: added,
-        totalVisibleEntries: nextProps.entries && nextProps.entries.length,
+        totalVisibleEntries: nextProps.entries ? nextProps.entries.length : 0,
       });
     }
-
+    // We also need to reset the deleted and added entries if the user has clicked the
+    // Cancel Changes button.
     if (nextProps.entries && nextProps.entries !== this.props.entries) {
-      let newEntries;
-      // If there are any deleted entries and the user loads more entries,
-      // we want to remove them from the entire combined list.
-      if (this.state.deleted.length) {
-        this.state.deleted.forEach((deleteEntry) => {
-          nextProps.entries.forEach((entry, i) => {
-            if (entry.id === deleteEntry.id) {
-              nextProps.entries.splice(i, 1);
-            }
-          });
+      if (nextProps.cancelClicked) {
+        deleted = [];
+        added = [];
+        this.setState({
+          draggingFrom: null,
+          entries: nextProps.entries,
+          deleted: deleted,
+          added: added,
+          totalVisibleEntries: nextProps.entries.length,
         });
-      }
-      newEntries = nextProps.entries;
+        this.props.setCancelClicked(false);
+      } else {
+        let newEntries;
+        // If there are any deleted entries and the user loads more entries,
+        // we want to remove them from the entire combined list.
+        if (this.state.deleted.length) {
+          this.state.deleted.forEach((deleteEntry) => {
+            nextProps.entries.forEach((entry, i) => {
+              if (entry.id === deleteEntry.id) {
+                nextProps.entries.splice(i, 1);
+              }
+            });
+          });
+        }
+        newEntries = nextProps.entries;
 
-      // If there are any added entries and the user loads more entries,
-      // we want to added them back to the entire combined list.
-      if (this.state.added.length) {
-        newEntries = this.state.added.concat(nextProps.entries);
-      }
+        // If there are any added entries and the user loads more entries,
+        // we want to added them back to the entire combined list.
+        if (this.state.added.length) {
+          newEntries = this.state.added.concat(nextProps.entries);
+        }
 
-      this.setState({
-        draggingFrom: null,
-        entries: newEntries,
-        deleted: deleted,
-        added: added,
-        totalVisibleEntries: newEntries.length,
-      });
+        this.setState({
+          draggingFrom: null,
+          entries: newEntries,
+          deleted: deleted,
+          added: added,
+          totalVisibleEntries: newEntries.length,
+        });
 
-      const droppableList = document.getElementById(
-        "custom-list-entries-droppable"
-      );
+        const droppableList = document.getElementById(
+          "custom-list-entries-droppable"
+        );
 
-      if (droppableList) {
-        droppableList.scrollTo(0, 0);
+        if (droppableList) {
+          droppableList.scrollTo(0, 0);
+        }
       }
     }
   }
@@ -465,7 +481,6 @@ export default class CustomListEntriesEditor extends React.Component<
     const type = result.type;
     const source = result.source;
     const destination = result.destination;
-
     if (
       source.droppableId === "search-results" &&
       destination &&

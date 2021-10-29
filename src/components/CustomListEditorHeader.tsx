@@ -10,8 +10,9 @@ export interface CustomListEditorHeaderProps {
   listId?: string | number;
   hasListInfoChanged: boolean;
   draftEntries: Entry[];
-  setDraftTitle: (title) => void;
-  setDraftEntries: (entries) => void;
+  setDraftTitle: (title: string) => void;
+  setDraftEntries: (entries: Entry[]) => void;
+  setCancelClicked: (wasCancelClicked: boolean) => void;
   saveFormData: () => void;
 }
 
@@ -22,19 +23,12 @@ export default function CustomListEditorHeader({
   hasListInfoChanged,
   setDraftTitle,
   setDraftEntries,
+  setCancelClicked,
   saveFormData,
   draftEntries,
 }: CustomListEditorHeaderProps) {
-  const titleOrEntriesIsBlank = (): boolean => {
-    if (
-      draftTitle === "" ||
-      draftTitle === "list title" ||
-      !draftEntries.length
-    ) {
-      return true;
-    }
-    return false;
-  };
+  const titleOrEntriesIsBlank = (): boolean =>
+    draftTitle === "" || draftTitle === "list title" || !draftEntries.length;
 
   const setNewTitleOnState = (newTitle): void => {
     setDraftTitle(newTitle);
@@ -43,6 +37,7 @@ export default function CustomListEditorHeader({
   const resetState = (): void => {
     setDraftTitle(list ? list.title : "");
     setDraftEntries(list ? list.books : []);
+    setCancelClicked(true);
   };
 
   return (

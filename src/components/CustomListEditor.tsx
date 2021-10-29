@@ -56,6 +56,7 @@ export default function CustomListEditor({
     AdminCollectionData[]
   >([]);
   const [showSaveError, setShowSaveError] = React.useState<boolean>(false);
+  const [cancelClicked, setCancelClicked] = React.useState<boolean>(false);
 
   React.useEffect(() => {
     if (list) {
@@ -143,12 +144,10 @@ export default function CustomListEditor({
     return false;
   };
 
-  console.log("entries in editor -->", draftEntries);
-
   return (
     <div className="custom-list-editor">
       {showSaveError && (
-        <p style={{ color: "#d13439" }}>
+        <p className="save-list-error">
           To be saved, a list must have a title and contain books.
         </p>
       )}
@@ -161,6 +160,7 @@ export default function CustomListEditor({
         saveFormData={saveFormData}
         hasListInfoChanged={hasListInfoChanged()}
         draftEntries={draftEntries}
+        setCancelClicked={setCancelClicked}
       />
       <CustomListEditorBody
         collections={collections}
@@ -183,6 +183,8 @@ export default function CustomListEditor({
         setDraftCollections={setDraftCollections}
         draftEntries={draftEntries}
         draftCollections={draftCollections}
+        cancelClicked={cancelClicked}
+        setCancelClicked={setCancelClicked}
       />
     </div>
   );
