@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>ResetAdobeIdDispatchProps | simplified-circulation-web</title>
+	<title>CustomListBookCardProps | simplified-circulation-web</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,10 +56,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="resetadobeiddispatchprops.html">ResetAdobeIdDispatchProps</a>
+					<a href="customlistbookcardprops.html">CustomListBookCardProps</a>
 				</li>
 			</ul>
-			<h1>Interface ResetAdobeIdDispatchProps</h1>
+			<h1>Interface CustomListBookCardProps</h1>
 		</div>
 	</div>
 </header>
@@ -70,12 +70,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">ResetAdobeIdDispatchProps</span>
-						<ul class="tsd-hierarchy">
-							<li>
-								<a href="resetadobeidprops.html" class="tsd-signature-type">ResetAdobeIdProps</a>
-							</li>
-						</ul>
+						<span class="target">CustomListBookCardProps</span>
 					</li>
 				</ul>
 			</section>
@@ -86,7 +81,11 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="resetadobeiddispatchprops.html#resetadobeid" class="tsd-kind-icon">reset<wbr>Adobe<wbr>Id</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="customlistbookcardprops.html#book" class="tsd-kind-icon">book</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="customlistbookcardprops.html#handleaddentry" class="tsd-kind-icon">handle<wbr>Add<wbr>Entry</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="customlistbookcardprops.html#handledeleteentry" class="tsd-kind-icon">handle<wbr>Delete<wbr>Entry</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="customlistbookcardprops.html#opdsfeedurl" class="tsd-kind-icon">opds<wbr>Feed<wbr>Url</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="customlistbookcardprops.html#typeofcard" class="tsd-kind-icon">type<wbr>OfCard</a></li>
 							</ul>
 						</section>
 					</div>
@@ -95,12 +94,22 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="resetadobeid" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> reset<wbr>Adobe<wbr>Id</h3>
-					<div class="tsd-signature tsd-kind-icon">reset<wbr>Adobe<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
+					<a name="book" class="tsd-anchor"></a>
+					<h3>book</h3>
+					<div class="tsd-signature tsd-kind-icon">book<span class="tsd-signature-symbol">:</span> <a href="entry.html" class="tsd-signature-type">Entry</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/NYPL-Simplified/circulation-web/blob/8bf9ee4/src/components/ResetAdobeId.tsx#L20">src/components/ResetAdobeId.tsx:20</a></li>
+							<li>Defined in <a href="https://github.com/NYPL-Simplified/circulation-web/blob/8bf9ee4/src/components/CustomListBookCard.tsx#L18">src/components/CustomListBookCard.tsx:18</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="handleaddentry" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> handle<wbr>Add<wbr>Entry</h3>
+					<div class="tsd-signature tsd-kind-icon">handle<wbr>Add<wbr>Entry<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/NYPL-Simplified/circulation-web/blob/8bf9ee4/src/components/CustomListBookCard.tsx#L19">src/components/CustomListBookCard.tsx:19</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -108,25 +117,73 @@
 						<ul class="tsd-parameters">
 							<li class="tsd-parameter-siganture">
 								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-property tsd-is-not-exported">
-									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>data<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">FormData</span>, library<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 								</ul>
 								<ul class="tsd-descriptions">
 									<li class="tsd-description">
 										<h4 class="tsd-parameters-title">Parameters</h4>
 										<ul class="tsd-parameters">
 											<li>
-												<h5>data: <span class="tsd-signature-type">FormData</span></h5>
-											</li>
-											<li>
-												<h5>library: <span class="tsd-signature-type">string</span></h5>
+												<h5>id: <span class="tsd-signature-type">string</span></h5>
 											</li>
 										</ul>
-										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 									</li>
 								</ul>
 							</li>
 						</ul>
 					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="handledeleteentry" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> handle<wbr>Delete<wbr>Entry</h3>
+					<div class="tsd-signature tsd-kind-icon">handle<wbr>Delete<wbr>Entry<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/NYPL-Simplified/circulation-web/blob/8bf9ee4/src/components/CustomListBookCard.tsx#L20">src/components/CustomListBookCard.tsx:20</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-siganture">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-property tsd-is-not-exported">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>id: <span class="tsd-signature-type">string</span></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="opdsfeedurl" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> opds<wbr>Feed<wbr>Url</h3>
+					<div class="tsd-signature tsd-kind-icon">opds<wbr>Feed<wbr>Url<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/NYPL-Simplified/circulation-web/blob/8bf9ee4/src/components/CustomListBookCard.tsx#L17">src/components/CustomListBookCard.tsx:17</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="typeofcard" class="tsd-anchor"></a>
+					<h3>type<wbr>OfCard</h3>
+					<div class="tsd-signature tsd-kind-icon">type<wbr>OfCard<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"searchResult"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"entry"</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/NYPL-Simplified/circulation-web/blob/8bf9ee4/src/components/CustomListBookCard.tsx#L16">src/components/CustomListBookCard.tsx:16</a></li>
+						</ul>
+					</aside>
 				</section>
 			</section>
 		</div>
@@ -143,10 +200,22 @@
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface">
-						<a href="resetadobeiddispatchprops.html" class="tsd-kind-icon">Reset<wbr>Adobe<wbr>IdDispatch<wbr>Props</a>
+						<a href="customlistbookcardprops.html" class="tsd-kind-icon">Custom<wbr>List<wbr>Book<wbr>Card<wbr>Props</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="resetadobeiddispatchprops.html#resetadobeid" class="tsd-kind-icon">reset<wbr>Adobe<wbr>Id</a>
+								<a href="customlistbookcardprops.html#book" class="tsd-kind-icon">book</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="customlistbookcardprops.html#handleaddentry" class="tsd-kind-icon">handle<wbr>Add<wbr>Entry</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="customlistbookcardprops.html#handledeleteentry" class="tsd-kind-icon">handle<wbr>Delete<wbr>Entry</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="customlistbookcardprops.html#opdsfeedurl" class="tsd-kind-icon">opds<wbr>Feed<wbr>Url</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="customlistbookcardprops.html#typeofcard" class="tsd-kind-icon">type<wbr>OfCard</a>
 							</li>
 						</ul>
 					</li>
