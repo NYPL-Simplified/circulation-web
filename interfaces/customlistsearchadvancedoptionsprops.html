@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>CustomListSearchState | simplified-circulation-web</title>
+	<title>CustomListSearchAdvancedOptionsProps | simplified-circulation-web</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,10 +56,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="customlistsearchstate.html">CustomListSearchState</a>
+					<a href="customlistsearchadvancedoptionsprops.html">CustomListSearchAdvancedOptionsProps</a>
 				</li>
 			</ul>
-			<h1>Interface CustomListSearchState</h1>
+			<h1>Interface CustomListSearchAdvancedOptionsProps</h1>
 		</div>
 	</div>
 </header>
@@ -70,7 +70,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">CustomListSearchState</span>
+						<span class="target">CustomListSearchAdvancedOptionsProps</span>
 					</li>
 				</ul>
 			</section>
@@ -81,7 +81,12 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="customlistsearchstate.html#sortby" class="tsd-kind-icon">sort<wbr>By</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="customlistsearchadvancedoptionsprops.html#languages" class="tsd-kind-icon">languages</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="customlistsearchadvancedoptionsprops.html#library" class="tsd-kind-icon">library</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="customlistsearchadvancedoptionsprops.html#selectedlanguage" class="tsd-kind-icon">selected<wbr>Language</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="customlistsearchadvancedoptionsprops.html#setselectedlanguage" class="tsd-kind-icon">set<wbr>Selected<wbr>Language</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="customlistsearchadvancedoptionsprops.html#setsortby" class="tsd-kind-icon">set<wbr>Sort<wbr>By</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="customlistsearchadvancedoptionsprops.html#sortby" class="tsd-kind-icon">sort<wbr>By</a></li>
 							</ul>
 						</section>
 					</div>
@@ -90,12 +95,104 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="sortby" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> sort<wbr>By</h3>
-					<div class="tsd-signature tsd-kind-icon">sort<wbr>By<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<a name="languages" class="tsd-anchor"></a>
+					<h3>languages</h3>
+					<div class="tsd-signature tsd-kind-icon">languages<span class="tsd-signature-symbol">:</span> <a href="languagesdata.html" class="tsd-signature-type">LanguagesData</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/NYPL-Simplified/circulation-web/blob/8bf9ee4/src/components/CustomListSearch.tsx#L17">src/components/CustomListSearch.tsx:17</a></li>
+							<li>Defined in <a href="https://github.com/NYPL-Simplified/circulation-web/blob/2fc70ad/src/components/CustomListSearchAdvancedOptions.tsx#L7">src/components/CustomListSearchAdvancedOptions.tsx:7</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="library" class="tsd-anchor"></a>
+					<h3>library</h3>
+					<div class="tsd-signature tsd-kind-icon">library<span class="tsd-signature-symbol">:</span> <a href="librarydata.html" class="tsd-signature-type">LibraryData</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/NYPL-Simplified/circulation-web/blob/2fc70ad/src/components/CustomListSearchAdvancedOptions.tsx#L8">src/components/CustomListSearchAdvancedOptions.tsx:8</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="selectedlanguage" class="tsd-anchor"></a>
+					<h3>selected<wbr>Language</h3>
+					<div class="tsd-signature tsd-kind-icon">selected<wbr>Language<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/NYPL-Simplified/circulation-web/blob/2fc70ad/src/components/CustomListSearchAdvancedOptions.tsx#L11">src/components/CustomListSearchAdvancedOptions.tsx:11</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="setselectedlanguage" class="tsd-anchor"></a>
+					<h3>set<wbr>Selected<wbr>Language</h3>
+					<div class="tsd-signature tsd-kind-icon">set<wbr>Selected<wbr>Language<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/NYPL-Simplified/circulation-web/blob/2fc70ad/src/components/CustomListSearchAdvancedOptions.tsx#L12">src/components/CustomListSearchAdvancedOptions.tsx:12</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-siganture">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-property tsd-is-not-exported">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>value: <span class="tsd-signature-type">any</span></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="setsortby" class="tsd-anchor"></a>
+					<h3>set<wbr>Sort<wbr>By</h3>
+					<div class="tsd-signature tsd-kind-icon">set<wbr>Sort<wbr>By<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/NYPL-Simplified/circulation-web/blob/2fc70ad/src/components/CustomListSearchAdvancedOptions.tsx#L10">src/components/CustomListSearchAdvancedOptions.tsx:10</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-siganture">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-property tsd-is-not-exported">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>value: <span class="tsd-signature-type">any</span></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="sortby" class="tsd-anchor"></a>
+					<h3>sort<wbr>By</h3>
+					<div class="tsd-signature tsd-kind-icon">sort<wbr>By<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/NYPL-Simplified/circulation-web/blob/2fc70ad/src/components/CustomListSearchAdvancedOptions.tsx#L9">src/components/CustomListSearchAdvancedOptions.tsx:9</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -114,10 +211,25 @@
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface">
-						<a href="customlistsearchstate.html" class="tsd-kind-icon">Custom<wbr>List<wbr>Search<wbr>State</a>
+						<a href="customlistsearchadvancedoptionsprops.html" class="tsd-kind-icon">Custom<wbr>List<wbr>Search<wbr>Advanced<wbr>Options<wbr>Props</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="customlistsearchstate.html#sortby" class="tsd-kind-icon">sort<wbr>By</a>
+								<a href="customlistsearchadvancedoptionsprops.html#languages" class="tsd-kind-icon">languages</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="customlistsearchadvancedoptionsprops.html#library" class="tsd-kind-icon">library</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="customlistsearchadvancedoptionsprops.html#selectedlanguage" class="tsd-kind-icon">selected<wbr>Language</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="customlistsearchadvancedoptionsprops.html#setselectedlanguage" class="tsd-kind-icon">set<wbr>Selected<wbr>Language</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="customlistsearchadvancedoptionsprops.html#setsortby" class="tsd-kind-icon">set<wbr>Sort<wbr>By</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="customlistsearchadvancedoptionsprops.html#sortby" class="tsd-kind-icon">sort<wbr>By</a>
 							</li>
 						</ul>
 					</li>
