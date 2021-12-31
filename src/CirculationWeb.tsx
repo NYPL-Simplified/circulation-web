@@ -45,11 +45,11 @@ interface ConfigurationSettings {
 
 /** The main admin interface application. Create an instance of this class
     to render the app and set up routing. */
-class CirculationWeb {
+export default class CirculationWeb {
   constructor(config: ConfigurationSettings) {
-    // const div = document.createElement("div");
-    // div.id = "opds-catalog";
-    // document.getElementsByTagName("body")[0].appendChild(div);
+    const div = document.createElement("div");
+    div.id = "opds-catalog";
+    document.getElementsByTagName("body")[0].appendChild(div);
 
     const catalogEditorPath =
       "/admin/web(/collection/:collectionUrl)(/book/:bookUrl)(/tab/:tab)";
@@ -110,4 +110,4 @@ class CirculationWeb {
   }
 }
 
-export = CirculationWeb;
+// export = CirculationWeb;
