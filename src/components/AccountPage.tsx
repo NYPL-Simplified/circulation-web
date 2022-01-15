@@ -21,6 +21,7 @@ export default class AccountPage extends React.Component<{}, {}> {
   };
 
   render(): JSX.Element {
+    console.log("we are here");
     return (
       <div className="account">
         <Header />

@@ -2,31 +2,24 @@ const path = require("path");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 const webpack = require("webpack");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
-  entry: path.resolve(__dirname, "src", "index.tsx"),
-  // entry: {
-  //   app: ["./src/stylesheets/app.scss", "./src/index.tsx"],
-  // },
+  entry: [
+    path.resolve(__dirname, "src", "index.tsx"),
+    path.resolve(__dirname, "src", "stylesheets", "app.scss"),
+  ],
   output: {
-    path: path.resolve(__dirname, "dist"),
+    path: path.resolve(__dirname, "build"),
     filename: "bundle.js",
+    publicPath: "/",
   },
   devServer: {
     historyApiFallback: true,
-    // contentBasåe: path.resolve(__dirname, "dist"),
-    open: true,
+    open: ["/admin/web"],
     port: 9000,
   },
-  // output: {
-  //   path: path.resolve(__dirname, "./dist"),
-  //   filename: "circulation-web.js",
-  //   library: "CirculationWeb",
-  //   libraryTarget: "umd"
-  // },
   plugins: [
     new CleanWebpackPlugin(),
     // jsdom is needed for server rendering, but causes errors
