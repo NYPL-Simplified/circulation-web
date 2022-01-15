@@ -5,7 +5,9 @@ import * as Adapter from "enzyme-adapter-react-16";
 configure({ adapter: new Adapter() });
 
 /** Set up the DOM and global variables for tests. */
-const doc = jsdom("<!doctype html><html><body></body></html>");
+const doc = jsdom(
+  "<!doctype html><html><body><div id='root'></div></body></html>"
+);
 const win = doc.defaultView;
 
 global["document"] = doc;
