@@ -1,6 +1,6 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import { Router, Route, browserHistory } from "react-router";
+import { Router, Route, browserHistory, Redirect } from "react-router";
 import ContextProvider from "./components/ContextProvider";
 import { TOSContextProvider } from "./components/TOSContext";
 import CatalogPage from "./components/CatalogPage";
@@ -85,6 +85,8 @@ const App = () => {
         value={...[config.tos_link_text, config.tos_link_href]}
       >
         <Router history={browserHistory}>
+          <Redirect from="/" to="/admin/web" />
+          <Redirect from="/admin" to="/admin/web" />
           <Route path={catalogEditorPath} component={CatalogPage} />
           <Route path={customListPagePath} component={CustomListPage} />
           <Route path={lanePagePath} component={LanePage} />
