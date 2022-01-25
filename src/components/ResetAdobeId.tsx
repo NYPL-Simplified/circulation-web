@@ -5,7 +5,7 @@ import { State } from "../reducers/index";
 import ActionCreator from "../actions";
 import { FetchErrorData } from "opds-web-client/lib/interfaces";
 import { PatronData } from "../interfaces";
-import { Alert } from "react-bootstrap";
+import Alert from "react-bootstrap/Alert";
 import ManagePatronsForm from "./ManagePatronsForm";
 import EditableInput from "./EditableInput";
 import { Button } from "library-simplified-reusable-components";
@@ -57,7 +57,7 @@ export class ResetAdobeId extends React.Component<
       <div className="patron-actions">
         <h3>Reset Adobe ID</h3>
         {fetchError && patronExists && (
-          <Alert bsStyle="danger">
+          <Alert variant="danger">
             Error: failed to reset Adobe ID for patron{" "}
             {patron.authorization_identifier}
           </Alert>
@@ -90,7 +90,7 @@ export class ResetAdobeId extends React.Component<
               </b>
             </p>
             {responseBody && (
-              <Alert bsStyle="success">
+              <Alert variant="success">
                 {responseBody}
                 <br />
                 Please instruct the patron to sign back into their account.

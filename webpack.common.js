@@ -1,5 +1,5 @@
 const path = require("path");
-const CleanWebpackPlugin = require("clean-webpack-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const webpack = require("webpack");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
@@ -8,7 +8,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 module.exports = {
   entry: [
     path.resolve(__dirname, "src", "index.tsx"),
-    path.resolve(__dirname, "src", "stylesheets", "app.scss"),
+    // path.resolve(__dirname, "src", "stylesheets", "app.scss"),
   ],
   output: {
     path: path.resolve(__dirname, "build"),
@@ -24,7 +24,9 @@ module.exports = {
     new CleanWebpackPlugin(),
     // jsdom is needed for server rendering, but causes errors
     // in the browser even if it is never used, so we ignore it:
-    new webpack.IgnorePlugin(/jsdom$/),
+    new webpack.IgnorePlugin({
+      resourceRegExp: /jsdom$/,
+    }),
     // Extract separate css file.
     new MiniCssExtractPlugin({ filename: "circulation-web.css" }),
     // Set a local global variable in the app that will be used only
@@ -48,11 +50,18 @@ module.exports = {
       {
         test: /\.tsx?$/,
         exclude: [/node_modules/],
-        loaders: ["ts-loader"],
+        loader: "ts-loader",
       },
       {
         test: /\.(ttf|woff|eot|svg|png|woff2|gif|jpg)(\?[\s\S]+)?$/,
-        loader: "url-loader?limit=100000",
+        use: [
+          {
+            loader: "url-loader",
+            options: {
+              limit: 100000,
+            },
+          },
+        ],
       },
       {
         test: /\.(jsx|js)$/,
@@ -80,7 +89,23 @@ module.exports = {
   resolve: {
     extensions: [".ts", ".tsx", ".js", ".scss"],
     alias: {
-      react: path.resolve("./node_modules/react"),
+      // react: path.resolve("./node_modules/react"),
+    },
+    fallback: {
+      "stream": require.resolve("stream-browserify"),
+      "url": require.resolve("url/"),
+      "timers": require.resolve("timers-browserify"),
+      // "jsdom": false,
+      // "xml2js": false,
+      // "url": false,
+      // "path": false,
+      // "timers": false,
+      // "http": false,
+      // "https": false,
+      // "os": false,
+      // "zlib": false,
+      // "stream": false,
+      // "assert": false,
     },
   },
 };

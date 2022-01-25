@@ -6,7 +6,7 @@ import { shallow, mount } from "enzyme";
 
 import { Header } from "../Header";
 import EditableInput from "../EditableInput";
-import { NavItem } from "react-bootstrap";
+import NavItem from "react-bootstrap/NavItem";
 import { Link } from "react-router";
 import Admin from "../../models/Admin";
 

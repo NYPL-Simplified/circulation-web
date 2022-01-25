@@ -1,6 +1,6 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import { Alert } from "react-bootstrap";
+import Alert from "react-bootstrap/Alert";
 import { FetchErrorData } from "opds-web-client/lib/interfaces";
 import { Button } from "library-simplified-reusable-components";
 
@@ -24,7 +24,7 @@ export default class ErrorMessage extends React.Component<
 
     if (status === 401) {
       alertElement = (
-        <Alert bsStyle="danger">
+        <Alert variant="danger">
           {/* prettier-ignore */}
           <h4>You have been logged out.<br />
             <a target="_blank" href="/admin/sign_in_again">Log in again</a>
@@ -58,7 +58,7 @@ export default class ErrorMessage extends React.Component<
         errorMessageText = `Error: ${response}`;
       }
       alertElement = (
-        <Alert bsStyle="danger">
+        <Alert variant="danger">
           <h4>
             {errorMessageHeader && (
               <p>

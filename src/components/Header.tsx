@@ -9,7 +9,7 @@ import { LibraryData, LibrariesData } from "../interfaces";
 import Admin from "../models/Admin";
 import EditableInput from "./EditableInput";
 import { Link } from "react-router";
-import { Navbar, Nav, NavItem } from "react-bootstrap";
+import { Navbar, Nav, NavItem, Container } from "react-bootstrap";
 import { Router } from "opds-web-client/lib/interfaces";
 import { Button } from "library-simplified-reusable-components";
 import { GenericWedgeIcon } from "@nypl/dgx-svg-icons";
@@ -32,9 +32,9 @@ export interface HeaderOwnProps {
 
 export interface HeaderProps
   extends React.Props<Header>,
-    HeaderStateProps,
-    HeaderDispatchProps,
-    HeaderOwnProps {}
+  HeaderStateProps,
+  HeaderDispatchProps,
+  HeaderOwnProps { }
 
 export interface HeaderState {
   showAccountDropdown: boolean;
@@ -73,7 +73,7 @@ export class Header extends React.Component<HeaderProps, HeaderState> {
       if (
         this.state.showAccountDropdown &&
         (event.target as any).className.indexOf("account-dropdown-toggle") ===
-          -1
+        -1
       ) {
         this.toggleAccountDropdown();
       }
@@ -84,8 +84,8 @@ export class Header extends React.Component<HeaderProps, HeaderState> {
     let permissions = isSystemAdmin
       ? "system admin"
       : isLibraryManager
-      ? "library manager"
-      : "librarian";
+        ? "library manager"
+        : "librarian";
     return <li className="permissions">Logged in as a {permissions}</li>;
   }
 
@@ -132,35 +132,32 @@ export class Header extends React.Component<HeaderProps, HeaderState> {
     const accountLink = { label: "Change password", href: "account/" };
 
     return (
-      <Navbar fluid={true}>
-        <Navbar.Header>
-          <Navbar.Brand>Admin</Navbar.Brand>
-          {this.props.libraries && this.props.libraries.length > 0 && (
-            <EditableInput
-              elementType="select"
-              ref={this.libraryRef}
-              value={currentLibrary}
-              onChange={this.changeLibrary}
-              aria-label="Select a library"
-            >
-              {(!this.context.library || !currentLibrary) && (
-                <option aria-selected={false}>Select a library</option>
-              )}
-              {this.props.libraries.map((library) => (
-                <option
-                  key={library.short_name}
-                  value={library.short_name}
-                  aria-selected={currentLibrary === library.short_name}
-                >
-                  {library.name || library.short_name}
-                </option>
-              ))}
-            </EditableInput>
-          )}
-          <Navbar.Toggle />
-        </Navbar.Header>
-
-        <Navbar.Collapse className="menu">
+      <Navbar>
+        <Navbar.Brand>Admin</Navbar.Brand>
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        {this.props.libraries && this.props.libraries.length > 0 && (
+          <EditableInput
+            elementType="select"
+            ref={this.libraryRef}
+            value={currentLibrary}
+            onChange={this.changeLibrary}
+            aria-label="Select a library"
+          >
+            {(!this.context.library || !currentLibrary) && (
+              <option aria-selected={false}>Select a library</option>
+            )}
+            {this.props.libraries.map((library) => (
+              <option
+                key={library.short_name}
+                value={library.short_name}
+                aria-selected={currentLibrary === library.short_name}
+              >
+                {library.name || library.short_name}
+              </option>
+            ))}
+          </EditableInput>
+        )}
+        <Navbar.Collapse role="menubar" className="menu" id="responsive-navbar-nav">
           {currentLibrary && (
             <Nav>
               {libraryNavItems.map((item) =>
@@ -171,7 +168,7 @@ export class Header extends React.Component<HeaderProps, HeaderState> {
               )}
             </Nav>
           )}
-          <Nav className="pull-right">
+          <Nav className="justify-content-end">
             {sitewideLinkItems.map((item) =>
               this.renderLinkItem(item, currentPathname)
             )}
@@ -244,14 +241,14 @@ export class Header extends React.Component<HeaderProps, HeaderState> {
     const isActive = currentPathname.indexOf(href) !== -1;
 
     return (
-      <NavItem
+      <Nav.Link
         key={href}
         className="header-link"
         href={`${rootCatalogURL}${currentLibrary}${href}`}
         active={isActive}
       >
         {label}
-      </NavItem>
+      </Nav.Link>
     );
   }
 

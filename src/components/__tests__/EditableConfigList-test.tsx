@@ -13,7 +13,7 @@ import {
 } from "../EditableConfigList";
 import ErrorMessage from "../ErrorMessage";
 import EditableInput from "../EditableInput";
-import { Alert } from "react-bootstrap";
+import Alert from "react-bootstrap/Alert";
 import LoadingIndicator from "opds-web-client/lib/components/LoadingIndicator";
 
 describe("EditableConfigList", () => {

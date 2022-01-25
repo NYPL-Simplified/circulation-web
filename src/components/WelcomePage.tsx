@@ -1,14 +1,14 @@
 import * as React from "react";
 import Header from "./Header";
 import Footer from "./Footer";
-import { Jumbotron } from "react-bootstrap";
+import Container from "react-bootstrap/Container";
 
 export default class WelcomePage extends React.Component<{}, {}> {
   render(): JSX.Element {
     return (
       <div className="welcome-page">
         <Header />
-        <Jumbotron>
+        <Container>
           <h2>Welcome to the Circulation Admin Interface!</h2>
           <hr></hr>
           <p>
@@ -20,7 +20,7 @@ export default class WelcomePage extends React.Component<{}, {}> {
             </a>
             .
           </p>
-        </Jumbotron>
+        </Container>
         <Footer />
       </div>
     );

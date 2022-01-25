@@ -8,7 +8,6 @@ import { connect } from "react-redux";
 import ActionCreator from "../actions";
 import { SearchServicesData, SearchServiceData } from "../interfaces";
 import ServiceEditForm from "./ServiceEditForm";
-import { Alert } from "react-bootstrap";
 
 /** Right panel for search services on the system configuration page.
     Shows a list of current search services and allows creating a new
