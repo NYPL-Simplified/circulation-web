@@ -12,9 +12,9 @@ describe("App", () => {
   //     const setup = wrapper.find(SetupPage);
   //     expect(setup.length).to.equal(1);
   //   });
-  // it("renders Router", () => {
-  //   const wrapper = mount(<App />);
-  //   const router = wrapper.find(Router);
-  //   expect(router.length).to.equal(1);
-  // });
+  it("renders Router", () => {
+    const wrapper = mount(<App />);
+    const router = wrapper.find(Router);
+    expect(router.length).to.equal(1);
+  });
 });

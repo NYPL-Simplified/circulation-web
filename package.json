@@ -16,9 +16,9 @@
   "scripts": {
     "prepublish": "npm run prod",
     "lint": "tslint -c tslint.json src/*.ts src/*.tsx src/**/*.ts src/**/*.tsx src/**/**/*.ts src/**/**/*.tsx && sass-lint -c .sass-lint.yml -v -q",
-    "test": "npm run lint && tsc && mocha --require ts-node/register --require src/testHelper.ts src/__tests__/*.ts src/**/__tests__/*.ts src/**/**/__tests__/*.ts",
-    "test-list": "mocha --require ts-node/register --require src/testHelper.js src/__tests__/*.js src/**/__tests__/*.js src/**/**/__tests__/*.js --reporter ./testReporter.js",
-    "test-file": "npm run lint && tsc && mocha --require src/testHelper.js",
+    "test": "npm run lint && tsc && cp -r src/stylesheets lib && mocha --require ts-node/register --require src/testHelper.ts src/__tests__/*.ts src/**/__tests__/*.ts src/**/**/__tests__/*.ts",
+    "test-list": "mocha --require ts-node/register --require src/testHelper.ts src/__tests__/*.ts src/**/__tests__/*.ts src/**/**/__tests__/*.ts --reporter ./testReporter.ts",
+    "test-file": "npm run lint && tsc && cp -r src/stylesheets lib && mocha --require src/testHelper.ts",
     "test-browser": "npm run test-chrome && npm run test-firefox",
     "test-chrome": "node_modules/.bin/selenium-standalone install && nightwatch -e chrome",
     "test-firefox": "node_modules/.bin/selenium-standalone install && nightwatch -e firefox",
