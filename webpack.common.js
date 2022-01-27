@@ -88,24 +88,10 @@ module.exports = {
   },
   resolve: {
     extensions: [".ts", ".tsx", ".js", ".scss"],
-    alias: {
-      // react: path.resolve("./node_modules/react"),
-    },
     fallback: {
       "stream": require.resolve("stream-browserify"),
       "url": require.resolve("url/"),
       "timers": require.resolve("timers-browserify"),
-      // "jsdom": false,
-      // "xml2js": false,
-      // "url": false,
-      // "path": false,
-      // "timers": false,
-      // "http": false,
-      // "https": false,
-      // "os": false,
-      // "zlib": false,
-      // "stream": false,
-      // "assert": false,
     },
   },
 };
