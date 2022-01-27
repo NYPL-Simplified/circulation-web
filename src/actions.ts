@@ -434,14 +434,14 @@ export default class ActionCreator extends BaseActionCreator {
   }
 
   fetchLibraries() {
-    const url = "https://qa-circulation.librarysimplified.org/admin/libraries";
+    const url = "/admin/libraries";
     return this.fetchJSON<LibrariesData>(ActionCreator.LIBRARIES, url).bind(
       this
     );
   }
 
   editLibrary(data: FormData) {
-    const url = "https://qa-circulation.librarysimplified.org/admin/libraries";
+    const url = "/admin/libraries";
     return this.postForm(ActionCreator.EDIT_LIBRARY, url, data).bind(this);
   }
 
