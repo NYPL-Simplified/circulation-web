@@ -22,4 +22,4 @@ jobs:
       - name: Run tests
         env:
           TZ: America/New_York
-        run: npm test
+        run: npm run test
