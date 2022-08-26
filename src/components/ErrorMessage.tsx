@@ -86,7 +86,7 @@ export default class ErrorMessage extends React.Component<
     );
   }
 
-  //TODO: WTF is this doing?
+  // TODO: WTF is this doing?
   // componentDidMount() {
   //   if (this.errorMessageRef.current) {
   //     ReactDOM.findDOMNode(
