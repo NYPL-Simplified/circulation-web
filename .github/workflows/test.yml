@@ -1,6 +1,6 @@
 name: Test Circulation-Web
 on:
-  [push, pull_request]
+  [push]
 
 jobs:
   test-circulation-web:
