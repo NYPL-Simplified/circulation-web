@@ -31,7 +31,7 @@ export interface LanesSidebarProps {
 
 export default class LanesSidebar extends React.Component<
   LanesSidebarProps,
-  {}
+  Record<string, unknown>
 > {
   constructor(props: LanesSidebarProps) {
     super(props);
@@ -44,7 +44,6 @@ export default class LanesSidebar extends React.Component<
   }
 
   render(): JSX.Element {
-    const linkBase = "/admin/web/lanes/" + this.props.library;
     return (
       <div className="lanes-sidebar">
         <h2>Lane Manager</h2>
@@ -70,7 +69,7 @@ export default class LanesSidebar extends React.Component<
       create: ["Create Top-Level Lane", <AddIcon />, ""],
       reset: ["Reset All Lanes", <ResetIcon />, "inverted"],
     };
-    const [text, icon, className] = content[createOrReset];
+    const [text, icon] = content[createOrReset];
     const disabled = this.props.orderChanged ? "disabled" : "";
     const style =
       createOrReset === "create" ? "left-align" : "right-align inverted";
@@ -105,13 +104,19 @@ export default class LanesSidebar extends React.Component<
                   : "droppable"
               }
             >
-              {lanes.map((lane) => (
-                <Draggable draggableId={String(lane.id)} key={lane.id}>
-                  {(provided, snapshot) =>
-                    this.renderLane(lane, parent, provided, snapshot)
-                  }
-                </Draggable>
-              ))}
+              {lanes.map((lane, index) => {
+                return (
+                  <Draggable
+                    draggableId={String(lane.id)}
+                    key={lane.id}
+                    index={index}
+                  >
+                    {(provided, snapshot) =>
+                      this.renderLane(lane, parent, provided, snapshot)
+                    }
+                  </Draggable>
+                );
+              })}
               {provided.placeholder}
             </ul>
           )}

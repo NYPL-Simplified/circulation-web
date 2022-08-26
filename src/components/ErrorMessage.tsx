@@ -1,5 +1,4 @@
 import * as React from "react";
-import * as ReactDOM from "react-dom";
 import Alert from "react-bootstrap/Alert";
 import { FetchErrorData } from "opds-web-client/lib/interfaces";
 import { Button } from "library-simplified-reusable-components";
@@ -13,7 +12,7 @@ export interface ErrorMessageProps {
     response from the server. */
 export default class ErrorMessage extends React.Component<
   ErrorMessageProps,
-  {}
+  Record<string, unknown>
 > {
   private errorMessageRef = React.createRef<HTMLDivElement>();
   render(): JSX.Element {
@@ -87,13 +86,14 @@ export default class ErrorMessage extends React.Component<
     );
   }
 
-  componentDidMount() {
-    if (this.errorMessageRef.current) {
-      ReactDOM.findDOMNode<HTMLDivElement>(
-        this.errorMessageRef.current
-      ).focus();
-    }
-  }
+  //TODO: WTF is this doing?
+  // componentDidMount() {
+  //   if (this.errorMessageRef.current) {
+  //     ReactDOM.findDOMNode(
+  //       this.errorMessageRef.current as HTMLDivElement
+  //     ).focus();
+  //   }
+  // }
 
   isProblemDetail(response, pdString) {
     // Problem detail strings start with the phrase "Remote service returned a problem detail document";

@@ -39,7 +39,7 @@ describe("CustomLists", () => {
     },
   ];
 
-  const entry = { pwid: "1", title: "title", authors: [] };
+  const entry = { id: "1", title: "title", authors: [] };
 
   const searchResults = {
     id: "id",
@@ -122,7 +122,6 @@ describe("CustomLists", () => {
   const allLanes = [lane1, lane2, lane3];
   const lanesToDelete = [lane1, lane2];
 
-  const libraryManager = new Admin([{ role: "manager", library: "library" }]);
   const librarian = new Admin([{ role: "librarian", library: "library" }]);
 
   describe("on mount", () => {
@@ -389,7 +388,7 @@ describe("CustomLists", () => {
         loadMoreSearchResults
       );
       expect(editor.props().searchResults).to.equal(searchResults);
-      expect(editor.props().responseBody).to.be.undefined;
+      expect(editor.props().responseBody).to.equal("");
       expect(editor.props().isFetchingMoreSearchResults).to.equal(false);
       expect(editor.props().collections).to.deep.equal([
         collections[1],
@@ -401,26 +400,11 @@ describe("CustomLists", () => {
       const editCustomListProp = editor.props().editCustomList;
       await editCustomListProp();
       expect(editCustomList.callCount).to.equal(1);
-      expect(fetchCustomLists.callCount).to.equal(2);
-
-      wrapper.setProps({
-        children: (
-          <CustomLists
-            {...customListsProps}
-            responseBody="5"
-            editOrCreate="create"
-          />
-        ),
-      });
-
-      editor = wrapper.find(CustomListEditor);
-      expect(editor.props().responseBody).to.equal("5");
     });
 
     it("renders edit form", () => {
       let editor = wrapper.find(CustomListEditor);
       expect(editor.length).to.equal(0);
-
       const listDetails = Object.assign({}, listsData[1], { books: [entry] });
       wrapper.setProps({
         children: (
@@ -434,6 +418,7 @@ describe("CustomLists", () => {
           />
         ),
       });
+
       editor = wrapper.find(CustomListEditor);
       expect(editor.length).to.equal(1);
       expect(editor.props().list).to.deep.equal(listDetails);

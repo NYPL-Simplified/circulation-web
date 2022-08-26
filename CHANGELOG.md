@@ -1,5 +1,45 @@
 ## Changelog
 
+### v0.5.16
+
+#### Updated
+
+- Removed the router from the testUtils render function, which was causing testing issues with the RTL/Jest tests.
+- Created a new CatalogLink component that doesn't rely on the ContextProvider (related to the issue above). This component is currently only used in the List Manager.
+- Wrote tests using RTL for two main components in the List Manager, CustomListEditorHeader and CustomListEditorBody.
+
+### v0.5.15
+
+#### Updated/Bugfix
+
+- Fixed two bugs: one in which an error message in the List Manager didn't reset when a user moved to a new list, and another in which the updated entry count would not come through for a new list that the user added books to, navigated away from, and then navigated back to.
+
+### 2/1/22
+
+#### Updated
+
+- Installed Jest and configured it to run alongside Mocha.
+- Set up React Testing Library and added a testUtils.jsx file to give tests access to React context.
+
+### v0.5.14
+
+#### Bugfix
+
+- Fixed bug that caused deleting books from a list to not function correctly.
+
+### v0.5.13
+
+#### Updated
+
+- Updated the List Manager so that a POST request is made every time a user saves a title, adds a book, or deletes a book.
+- Because of the aforementioned change, the "Save" button is no longer needed, so it has been removed.
+
+### v0.5.12
+
+#### Updated
+
+- Updated the react-beautiful-dnd library from v2.3.1 to v11.0.2, and made necessary changes to the code and tests.
+
 ### v0.5.11
 
 #### Bugfix

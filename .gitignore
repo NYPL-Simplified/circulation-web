@@ -1,5 +1,6 @@
 build/*
 lib/*
+dist/*
 node_modules/*
 typings/*
 tests/browser/globals.js
@@ -10,3 +11,4 @@ tests/browser/reports/*
 selenium-server.log
 docs
 .eslintcache
+coverage

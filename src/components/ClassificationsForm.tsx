@@ -1,5 +1,4 @@
 import * as React from "react";
-import * as ReactDOM from "react-dom";
 import EditableInput from "./EditableInput";
 import WithRemoveButton from "./WithRemoveButton";
 import GenreForm from "./GenreForm";
@@ -358,9 +357,8 @@ export default class ClassificationsForm extends React.Component<
       this.setState({ error });
       setTimeout(() => {
         if (this.errorMessageRef.current) {
-          ReactDOM.findDOMNode<HTMLDivElement>(
-            this.errorMessageRef.current
-          ).focus();
+          // TODO: Figure out what is happening here
+          // ReactDOM.findDOMNode(this.errorMessageRef.current).focus();
         }
       }, 500);
       return;
