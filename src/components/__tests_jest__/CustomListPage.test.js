@@ -2,7 +2,6 @@
  * The following is an example test meant to check that testUtils.jsx is working as expected.
  * */
 
-import { fireEvent } from "@testing-library/react";
 import React from "react";
 import { render } from "../../testUtils/testUtils";
 import CustomListPage from "../CustomListPage";

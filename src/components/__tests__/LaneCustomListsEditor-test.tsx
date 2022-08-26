@@ -8,7 +8,6 @@ import { Droppable, Draggable } from "react-beautiful-dnd";
 import LaneCustomListsEditor from "../LaneCustomListsEditor";
 
 describe("LaneCustomListsEditor", () => {
-  let wrapper;
   let onUpdate;
 
   const allCustomListsData = [

@@ -7,7 +7,7 @@ import { Link } from "react-router";
 import { ListManagerProvider } from "../ListManagerContext";
 
 describe("CustomListsSidebar", () => {
-  let wrapper: Enzyme.CommonWrapper<any, any, {}>;
+  let wrapper: Enzyme.CommonWrapper<any, any, Record<string, unknown>>;
   let lists;
   const deleteCustomList = stub();
   const changeSort = stub();

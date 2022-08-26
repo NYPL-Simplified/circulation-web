@@ -122,7 +122,6 @@ describe("CustomLists", () => {
   const allLanes = [lane1, lane2, lane3];
   const lanesToDelete = [lane1, lane2];
 
-  const libraryManager = new Admin([{ role: "manager", library: "library" }]);
   const librarian = new Admin([{ role: "librarian", library: "library" }]);
 
   describe("on mount", () => {

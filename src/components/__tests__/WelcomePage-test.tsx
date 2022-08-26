@@ -7,7 +7,7 @@ import { shallow } from "enzyme";
 import WelcomePage from "../WelcomePage";
 import Header from "../Header";
 import Footer from "../Footer";
-import { Jumbotron } from "react-bootstrap";
+import Container from "react-bootstrap/Container";
 
 describe("WelcomePage", () => {
   let wrapper;
@@ -22,9 +22,9 @@ describe("WelcomePage", () => {
   });
 
   it("shows the welcome message", () => {
-    const jumbotron = wrapper.find(Jumbotron);
-    expect(jumbotron.length).to.equal(1);
-    const title = jumbotron.find("h2");
+    const container = wrapper.find(Container);
+    expect(container.length).to.equal(1);
+    const title = container.find("h2");
     expect(title.length).to.equal(1);
     expect(title.text()).to.equal(
       "Welcome to the Circulation Admin Interface!"

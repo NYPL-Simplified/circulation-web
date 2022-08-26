@@ -8,7 +8,7 @@ import buildStore from "../../store";
 
 import { ResetAdobeId } from "../ResetAdobeId";
 import EditableInput from "../EditableInput";
-import { Alert } from "react-bootstrap";
+import Alert from "react-bootstrap/Alert";
 import { Button } from "library-simplified-reusable-components";
 
 const patrons = [

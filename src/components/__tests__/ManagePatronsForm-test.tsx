@@ -9,7 +9,7 @@ import buildStore from "../../store";
 import { mapDispatchToProps, ManagePatronsForm } from "../ManagePatronsForm";
 import EditableInput from "../EditableInput";
 import ErrorMessage from "../ErrorMessage";
-import { Alert } from "react-bootstrap";
+import Alert from "react-bootstrap/Alert";
 
 import ActionCreator from "../../actions";
 

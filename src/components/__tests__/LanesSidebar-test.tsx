@@ -145,7 +145,6 @@ describe("LanesSidebar", () => {
   });
 
   it("drags and drops a top-level lane", () => {
-    const topLevelLanes = getTopLevelLanes();
     const dragTopLane2 = {
       draggableId: "4",
       source: { index: 1, droppableId: "top" },

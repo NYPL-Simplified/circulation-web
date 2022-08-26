@@ -72,7 +72,7 @@ In order to run the app with `react-axe`, run `npm run dev-test-axe`. This will 
 
 Like the codebase, all the unit tests are written in Typescript. Tests are written for all React components as well as redux and utility functions, and all can be found in their respective `__tests__` folders.
 
-To run the tests, perform `npm test`.
+To run the tests, perform `npm run test`. This command will find all the test files and compile them into javascript in the `lib/` directory. This directory is not added to git.
 
 We use GitHub Actions for continuous integration. Any pull requests submitted must have tests and those tests must pass on GitHub Actions.
 

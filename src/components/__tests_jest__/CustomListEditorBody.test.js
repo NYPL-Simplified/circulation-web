@@ -1,5 +1,5 @@
 import React from "react";
-import { within, waitFor } from "@testing-library/react";
+import { within } from "@testing-library/react";
 import { render } from "../../testUtils/testUtils";
 import CustomListEditorBody from "../CustomListEditorBody";
 import { DragDropContext } from "react-beautiful-dnd";
@@ -45,50 +45,6 @@ const listData = {
     },
   ],
   navigationLinks: [],
-};
-
-const searchResultsData = {
-  id: "id",
-  url: "url",
-  title: "title - search",
-  lanes: [],
-  navigationLinks: [],
-  books: [
-    {
-      id: "1",
-      title: "result 1",
-      authors: ["author 1"],
-      url: "/some/url1",
-      language: "eng",
-      raw: {
-        $: { "schema:additionalType": { value: "http://schema.org/EBook" } },
-      },
-    },
-    {
-      id: "2",
-      title: "result 2",
-      authors: ["author 2a", "author 2b"],
-      url: "/some/url2",
-      language: "eng",
-      raw: {
-        $: {
-          "schema:additionalType": {
-            value: "http://bib.schema.org/Audiobook",
-          },
-        },
-      },
-    },
-    {
-      id: "3",
-      title: "result 3",
-      authors: ["author 3"],
-      url: "/some/url3",
-      language: "eng",
-      raw: {
-        $: { "schema:additionalType": { value: "http://schema.org/EBook" } },
-      },
-    },
-  ],
 };
 
 const search = jest.fn();

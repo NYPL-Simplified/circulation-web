@@ -9,10 +9,8 @@ import { LibraryData, LibrariesData } from "../interfaces";
 import Admin from "../models/Admin";
 import EditableInput from "./EditableInput";
 import { Link } from "react-router";
-import { Navbar, Nav, NavItem } from "react-bootstrap";
+import { Navbar, Nav, NavDropdown, Container } from "react-bootstrap";
 import { Router } from "opds-web-client/lib/interfaces";
-import { Button } from "library-simplified-reusable-components";
-import { GenericWedgeIcon } from "@nypl/dgx-svg-icons";
 
 export interface HeaderStateProps {
   libraries?: LibraryData[];
@@ -67,7 +65,6 @@ export class Header extends React.Component<HeaderProps, HeaderState> {
     this.state = { showAccountDropdown: false };
     this.changeLibrary = this.changeLibrary.bind(this);
     this.toggleAccountDropdown = this.toggleAccountDropdown.bind(this);
-    this.renderNavItem = this.renderNavItem.bind(this);
 
     document.body.addEventListener("click", (event: MouseEvent) => {
       if (
@@ -131,75 +128,104 @@ export class Header extends React.Component<HeaderProps, HeaderState> {
     ];
     const accountLink = { label: "Change password", href: "account/" };
 
-    return (
-      <Navbar fluid={true}>
-        <Navbar.Header>
-          <Navbar.Brand>Admin</Navbar.Brand>
-          {this.props.libraries && this.props.libraries.length > 0 && (
-            <EditableInput
-              elementType="select"
-              ref={this.libraryRef}
-              value={currentLibrary}
-              onChange={this.changeLibrary}
-              aria-label="Select a library"
-            >
-              {(!this.context.library || !currentLibrary) && (
-                <option aria-selected={false}>Select a library</option>
-              )}
-              {this.props.libraries.map((library) => (
-                <option
-                  key={library.short_name}
-                  value={library.short_name}
-                  aria-selected={currentLibrary === library.short_name}
-                >
-                  {library.name || library.short_name}
-                </option>
-              ))}
-            </EditableInput>
-          )}
-          <Navbar.Toggle />
-        </Navbar.Header>
+    let permissions = isSystemAdmin
+      ? "system admin"
+      : isLibraryManager
+      ? "library manager"
+      : "librarian";
 
-        <Navbar.Collapse className="menu">
-          {currentLibrary && (
-            <Nav>
-              {libraryNavItems.map((item) =>
-                this.renderNavItem(item, currentPathname, currentLibrary)
-              )}
-              {libraryLinkItems.map((item) =>
-                this.renderLinkItem(item, currentPathname, currentLibrary)
-              )}
-            </Nav>
-          )}
-          <Nav className="pull-right">
-            {sitewideLinkItems.map((item) =>
-              this.renderLinkItem(item, currentPathname)
+    return (
+      <Navbar expand="lg" role="navigation" variant="dark">
+        <Navbar.Brand>Admin</Navbar.Brand>
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        {this.props.libraries && this.props.libraries.length > 0 && (
+          <EditableInput
+            elementType="select"
+            ref={this.libraryRef}
+            value={currentLibrary}
+            onChange={this.changeLibrary}
+            aria-label="Select a library"
+          >
+            {(!this.context.library || !currentLibrary) && (
+              <option aria-selected={false}>Select a library</option>
             )}
-            {this.context.admin.email && (
-              <li className="dropdown">
-                <Button
-                  className="account-dropdown-toggle transparent"
-                  type="button"
-                  aria-haspopup="true"
-                  aria-expanded={this.state.showAccountDropdown}
-                  callback={this.toggleAccountDropdown}
-                  content={
-                    <span>
-                      {this.context.admin.email} <GenericWedgeIcon />
-                    </span>
-                  }
+            {this.props.libraries.map((library) => (
+              <option
+                key={library.short_name}
+                value={library.short_name}
+                aria-selected={currentLibrary === library.short_name}
+              >
+                {library.name || library.short_name}
+              </option>
+            ))}
+          </EditableInput>
+        )}
+        <Navbar.Collapse
+          role="menubar"
+          className="menu"
+          id="responsive-navbar-nav"
+        >
+          <Nav role="menu">
+            {currentLibrary && (
+              <ul>
+                {libraryNavItems.map((item) => (
+                  <NavItem
+                    key={item.href}
+                    item={item}
+                    currentPathname={currentPathname}
+                    currentLibrary={currentLibrary}
+                  />
+                ))}
+                {libraryLinkItems.map((item) => (
+                  <NavLinkItem
+                    key={item.href}
+                    item={item}
+                    currentPathname={currentPathname}
+                    currentLibrary={currentLibrary}
+                  />
+                ))}
+              </ul>
+            )}
+          </Nav>
+          <Nav role="menu">
+            <ul>
+              {sitewideLinkItems.map((item) => (
+                <NavLinkItem
+                  key={item.href}
+                  item={item}
+                  currentPathname={currentPathname}
                 />
-                {this.state.showAccountDropdown && (
-                  <ul className="dropdown-menu">
-                    {this.displayPermissions(isSystemAdmin, isLibraryManager)}
-                    {this.renderLinkItem(accountLink, currentPathname)}
-                    <li>
-                      <a href="/admin/sign_out">Sign out</a>
-                    </li>
-                  </ul>
-                )}
-              </li>
-            )}
+              ))}
+              {this.context.admin.email && (
+                <li>
+                  <NavDropdown
+                    className="dropdown"
+                    title={this.context.admin.email}
+                  >
+                    <ul>
+                      <li className="permissions">
+                        Logged in as a {permissions}
+                      </li>
+                      <li>
+                        <NavLinkItem
+                          item={accountLink}
+                          currentPathname={currentPathname}
+                          isDropdownNav={true}
+                        />
+                      </li>
+                      <li>
+                        <NavDropdown.Item
+                          role="menuitem"
+                          href="/admin/sign_out"
+                        >
+                          Sign out
+                        </NavDropdown.Item>
+                      </li>
+                    </ul>
+                  </NavDropdown>
+                </li>
+              )}
+            </ul>
           </Nav>
         </Navbar.Collapse>
       </Navbar>
@@ -225,77 +251,6 @@ export class Header extends React.Component<HeaderProps, HeaderState> {
   toggleAccountDropdown() {
     let showAccountDropdown = !this.state.showAccountDropdown;
     this.setState({ showAccountDropdown });
-  }
-
-  /**
-   * renderNavItem
-   * Renders a NavItem Bootstrap component and is active based on the page's current path.
-   * @param {HeaderNavItem} item Object with the label and href for the navigation item.
-   * @param {string} currentPathname Page's current URL.
-   * @param {string} currentLibrary Active library.
-   */
-  renderNavItem(
-    item: HeaderNavItem,
-    currentPathname: string,
-    currentLibrary: string = ""
-  ) {
-    const rootCatalogURL = "/admin/web/collection/";
-    const { label, href } = item;
-    const isActive = currentPathname.indexOf(href) !== -1;
-
-    return (
-      <NavItem
-        key={href}
-        className="header-link"
-        href={`${rootCatalogURL}${currentLibrary}${href}`}
-        active={isActive}
-      >
-        {label}
-      </NavItem>
-    );
-  }
-
-  /**
-   * renderLinkItem
-   * Renders a Link Router component for library and sitewide navigation links
-   * and if the current admin has the correct authentication.
-   * @param {HeaderNavItem} item Object with the label and href for the navigation item.
-   * @param {string} currentPathname Page's current URL.
-   * @param {string} currentLibrary Active library.
-   */
-  renderLinkItem(
-    item: HeaderNavItem,
-    currentPathname: string,
-    currentLibrary: string = ""
-  ) {
-    const rootUrl = "/admin/web/";
-    const { label, href, auth } = item;
-    let isActive = currentPathname.indexOf(href) !== -1;
-    if (currentLibrary) {
-      isActive = !!(isActive && currentLibrary);
-    }
-    const liElem = (
-      <li className="header-link" key={href}>
-        <Link
-          to={`${rootUrl}${href}${currentLibrary}`}
-          className={isActive ? "active-link" : ""}
-        >
-          {label}
-        </Link>
-      </li>
-    );
-
-    // Sometimes, some links should only be shown to admins who have
-    // specific privileges. If there is no restriction, always render the link.
-    if (auth !== undefined) {
-      if (auth) {
-        return liElem;
-      } else {
-        return;
-      }
-    }
-
-    return liElem;
   }
 }
 
@@ -345,3 +300,71 @@ export default class HeaderWithStore extends React.Component<
     );
   }
 }
+
+export type NavLinkItem = {
+  item: HeaderNavItem;
+  currentPathname: string;
+  currentLibrary?: string;
+  isDropdownNav?: boolean;
+};
+
+const NavLinkItem: React.FC<NavLinkItem> = ({
+  item,
+  currentPathname,
+  currentLibrary = "",
+  isDropdownNav = false,
+}) => {
+  const rootUrl = "/admin/web/";
+  const { label, href, auth } = item;
+  let isActive = currentPathname.indexOf(href) !== -1;
+  if (currentLibrary) {
+    isActive = !!(isActive && currentLibrary);
+  }
+  if (auth) {
+    if (isDropdownNav) {
+      return (
+        <NavDropdown.Item
+          as={Link}
+          to={`${rootUrl}${href}${currentLibrary}`}
+          className={isActive ? "active-link" : ""}
+        >
+          {label}
+        </NavDropdown.Item>
+      );
+    } else
+      return (
+        <li>
+          <Nav.Link
+            role="menuitem"
+            as={Link}
+            to={`${rootUrl}${href}${currentLibrary}`}
+            className={isActive ? "active-link" : ""}
+          >
+            {label}
+          </Nav.Link>
+        </li>
+      );
+  } else return null;
+};
+
+const NavItem: React.FC<NavLinkItem> = ({
+  item,
+  currentPathname,
+  currentLibrary = "",
+}) => {
+  const rootCatalogURL = "/admin/web/collection/";
+  const { label, href } = item;
+  const isActive = currentPathname.indexOf(href) !== -1;
+  return (
+    <li>
+      <Nav.Link
+        role="menuitem"
+        className="header-link"
+        href={`${rootCatalogURL}${currentLibrary}${href}`}
+        active={isActive}
+      >
+        {label}
+      </Nav.Link>
+    </li>
+  );
+};

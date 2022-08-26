@@ -104,7 +104,7 @@ const customListsProps = {
 let utils;
 
 beforeEach(() => {
-  utils = render(<CustomLists {...customListsProps} />);
+  render(<CustomLists {...customListsProps} />);
 });
 
 // Skipping this test for now. Tests for this component fail because the store cannot be found.
